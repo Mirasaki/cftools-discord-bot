@@ -39,7 +39,7 @@
     "scripts": [],
     "menu":{
       "Github repo": {
-        "href": "https://github.com/Mirasaki/discord.js-bot-template",
+        "href": "https://github.com/Mirasaki/cftools-discord-bot",
         "target":"_blank",
         "class":"menu-item",
         "id":"repository"
