@@ -11,7 +11,7 @@ const { PermissionsBitField } = require('discord.js');
 // NOTE:
 // This can't use clientConfig from Util module because
 // it would create a circular dependency
-const config = require(existsSync('../../config.js') ? '../../config' : '../../config.example');
+const config = require(existsSync('../../config/config.js') ? '../../config' : '../../config/config.example');
 
 /**
  * The `discord.js` GuildMember object

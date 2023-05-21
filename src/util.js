@@ -30,7 +30,7 @@ const { validPermValues } = require('./handlers/permissions');
 
 // Resolve client configuration
 const modeArg = process.argv.find((arg) => arg.startsWith('mode='));
-const configFilePath = modeArg && modeArg.endsWith('test') ? '../config.example.js' : '../config.js';
+const configFilePath = modeArg && modeArg.endsWith('test') ? '../config/config.example.js' : '../config/config.js';
 const clientConfig = require(configFilePath);
 
 /**

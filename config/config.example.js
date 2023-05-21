@@ -1,13 +1,9 @@
 const { PermissionsBitField } = require('discord.js');
 
 const config = {
-  // Array of Intents your bot needs
-  // https://discord.com/developers/docs/topics/gateway#gateway-intents
-  intents: [ 'Guilds' ],
-
   // Bot activity
   presence: {
-    // One of online, idle, invisible, dnd
+  // One of online, idle, invisible, dnd
     status: 'online',
     activities: [
       {
@@ -18,14 +14,6 @@ const config = {
     ]
   },
 
-  // Additional permissions that are considered required when generating
-  // the bot invite link with /invite
-  permissionsBase: [
-    PermissionsBitField.Flags.ViewChannel,
-    PermissionsBitField.Flags.SendMessages,
-    PermissionsBitField.Flags.SendMessagesInThreads
-  ],
-
   // Permission config
   permissions: {
     // Bot Owner, highest permission level (5)
@@ -34,6 +22,20 @@ const config = {
     // Bot developers, second to highest permission level (4)
     developers: [ '625286565375246366' ]
   },
+
+  // END - Everything else is internal config
+
+  // Array of Intents your bot needs
+  // https://discord.com/developers/docs/topics/gateway#gateway-intents
+  intents: [ 'Guilds' ],
+
+  // Additional permissions that are considered required when generating
+  // the bot invite link with /invite
+  permissionsBase: [
+    PermissionsBitField.Flags.ViewChannel,
+    PermissionsBitField.Flags.SendMessages,
+    PermissionsBitField.Flags.SendMessagesInThreads
+  ],
 
   // The Discord server invite to your Support server
   supportServerInviteLink: 'https://discord.mirasaki.dev'

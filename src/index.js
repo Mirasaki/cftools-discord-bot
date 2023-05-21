@@ -1,5 +1,5 @@
 // Importing from packages
-require('dotenv').config();
+require('dotenv').config({ path: './config/.env' });
 const logger = require('@mirasaki/logger');
 const chalk = require('chalk');
 const {
