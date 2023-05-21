@@ -4,6 +4,7 @@ const { EMBED_DESCRIPTION_MAX_LENGTH } = require('../../constants');
 const { colorResolver } = require('../../util');
 
 module.exports = new MessageContextCommand({
+  enabled: false,
   clientPerms: [ 'EmbedLinks' ],
   global: true,
   cooldown: {
