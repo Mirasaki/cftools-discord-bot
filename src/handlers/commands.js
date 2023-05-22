@@ -37,7 +37,7 @@ const { Routes } = require('discord-api-types/v10');
 const {
   titleCase, splitCamelCaseStr, colorResolver
 } = require('../util');
-const emojis = require('../config/emojis.json');
+const emojis = require('../../config/emojis.json');
 
 // Packages
 const logger = require('@mirasaki/logger');

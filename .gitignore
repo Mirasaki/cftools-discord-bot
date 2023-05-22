@@ -8,7 +8,7 @@ lerna-debug.log*
 
 # JSON config file
 config.js
-servers.json
+servers.js
 
 # Eslint output
 linter-output.txt

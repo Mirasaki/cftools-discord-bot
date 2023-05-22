@@ -38,7 +38,9 @@
     "cftools-sdk": "^2.0.0",
     "common-tags": "^1.8.2",
     "discord.js": "^14.11.0",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "heatmap.js": "^2.0.5",
+    "puppeteer": "^20.3.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",

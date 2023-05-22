@@ -14,7 +14,7 @@ const { OAuth2Scopes, PermissionFlagsBits } = require('discord.js');
 const { readdirSync, statSync } = require('fs');
 const moment = require('moment');
 const path = require('path');
-const colors = require('./config/colors.json');
+const colors = require('../config/colors.json');
 
 // Import our constants
 const {

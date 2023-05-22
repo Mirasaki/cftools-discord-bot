@@ -8,8 +8,8 @@ const { Collection } = require('discord.js');
 // Local imports
 const { clientConfig } = require('./util');
 const config = clientConfig;
-const emojis = require('./config/emojis');
-const colors = require('./config/colors');
+const emojis = require('../config/emojis.json');
+const colors = require('../config/colors');
 
 // Building collections
 const Commands = new Collection();
