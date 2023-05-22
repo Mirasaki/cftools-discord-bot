@@ -15,6 +15,7 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 - [Showcase](#showcase)
 - [Features](#features)
 - [Planned Features](#planned-features)
+- [Hosting](#hosting)
 - [Installation & Usage](#installation--usage)
   - [Prerequisites](#prerequisites)
   - [Docker](#run-as-a-docker-container-preferred)
@@ -66,6 +67,10 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 - Manage Ban lists
 - Manage Whitelists
 - Custom GameLab action support
+
+## Hosting
+
+We have partnered with [VYKIX.com](https://portal.vykix.com/aff.php?aff=17) after observing many of our clients using VYKIX services and products. Check them out for affordable and reliable hosting, they bring the **best DayZ hosting experience possible.** 📈
 
 ## Installation & Usage
 
