@@ -1,11 +1,12 @@
 # cftools-discord-bot
 
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
-![build](https://img.shields.io/github/actions/workflow/status/Mirasaki/cftools-discord-bot/test.yml?branch=main)
+![build](https://img.shields.io/github/actions/workflow/status/mirasaki/cftools-discord-bot/test.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/Mirasaki/cftools-discord-bot/badge)](https://www.codefactor.io/repository/github/Mirasaki/cftools-discord-bot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Docker Pulls](https://img.shields.io/docker/pulls/mirasaki/cftools-discord-bot)
 ![version](https://img.shields.io/github/v/release/Mirasaki/cftools-discord-bot)
+<!-- ![size](https://img.shields.io/docker/image-size/mirasaki/cftools-discord-bot) -->
 
 ---
 
@@ -57,6 +58,7 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 
 ## Planned Features
 
+- Public channel that forwards Discord messages to DayZ (configurable module)
 - Execute raw RCon commands - I'm looking for someone that is very knowledgeable on available RCon command
 - Dedicated Server Status channel, overview with online/offline status
 - Manage Priority Queue
