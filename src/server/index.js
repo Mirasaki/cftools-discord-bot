@@ -1,5 +1,5 @@
 // Require our shared environmental file as early as possible
-require('dotenv').config();
+require('dotenv').config({ path: './config/.env' });
 
 // Importing from packages
 const chalk = require('chalk');

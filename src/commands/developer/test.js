@@ -2,6 +2,7 @@ const { ApplicationCommandOptionType } = require('discord.js');
 const { ChatInputCommand } = require('../../classes/Commands');
 
 module.exports = new ChatInputCommand({
+  enabled: process.env.NODE_ENV !== 'production',
   permLevel: 'Developer',
   data: {
     description: 'Test command for the developers',
@@ -17,8 +18,7 @@ module.exports = new ChatInputCommand({
     default_member_permissions: 0
   },
 
-  run: (client, interaction) => {
-    // ...
+  run: async (client, interaction) => {
   }
 });
 

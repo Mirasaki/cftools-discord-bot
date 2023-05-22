@@ -9,6 +9,7 @@ const { colorResolver } = require('../../util');
 */
 
 module.exports = new ChatInputCommand({
+  enabled: process.env.NODE_ENV !== 'production',
   permLevel: 'Developer',
   data: {
     description: 'Reload an active, existing command',

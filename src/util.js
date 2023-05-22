@@ -14,7 +14,7 @@ const { OAuth2Scopes, PermissionFlagsBits } = require('discord.js');
 const { readdirSync, statSync } = require('fs');
 const moment = require('moment');
 const path = require('path');
-const colors = require('./config/colors.json');
+const colors = require('../config/colors.json');
 
 // Import our constants
 const {
@@ -24,13 +24,15 @@ const {
   MS_IN_ONE_DAY,
   MS_IN_ONE_HOUR,
   MS_IN_ONE_MINUTE,
-  MS_IN_ONE_SECOND
+  MS_IN_ONE_SECOND,
+  EMBED_DESCRIPTION_MAX_LENGTH,
+  EMBED_MAX_CHARACTER_LENGTH
 } = require('./constants');
 const { validPermValues } = require('./handlers/permissions');
 
 // Resolve client configuration
 const modeArg = process.argv.find((arg) => arg.startsWith('mode='));
-const configFilePath = modeArg && modeArg.endsWith('test') ? '../config.example.js' : '../config.js';
+const configFilePath = modeArg && modeArg.endsWith('test') ? '../config/config.example.js' : '../config/config.js';
 const clientConfig = require(configFilePath);
 
 /**
@@ -211,6 +213,101 @@ const msToHumanReadableTime = (ms) => {
   }
 };
 
+const doMaxLengthChunkReply = async (
+  interaction,
+  output,
+  {
+    title,
+    titleIcon,
+    color = colorResolver(),
+    ephemeral = false
+  }
+// eslint-disable-next-line sonarjs/cognitive-complexity
+) => {
+  const { member } = interaction;
+
+  // Single embed, short length
+  if (output.length <= EMBED_DESCRIPTION_MAX_LENGTH) {
+    interaction.editReply({ embeds: [
+      {
+        author: {
+          name: title,
+          iconURL: titleIcon
+        },
+        color,
+        description: output,
+        footer: { text: `Requested by: ${ member.displayName }` }
+      }
+    ] });
+  }
+
+  else {
+    // Chunk reply according to max allowed length
+    const lines = output.split('\n');
+    const chunks = [ '' ];
+    for (let i = 0; i < output.length; i++) {
+      const line = lines[i];
+      if (!line) continue;
+      const activeIndex = chunks.length - 1;
+      const chunk = chunks[activeIndex];
+      const newLength = chunk.length + (line.length + 2);
+      if (newLength <= EMBED_DESCRIPTION_MAX_LENGTH) chunks[activeIndex] += `\n${ line }`;
+      else chunks.push('');
+    }
+
+    // Check total length, max char count across ALL embeds
+    // cant exceed EMBED_MAX_CHARACTER_LENGTH
+    // Basically try 1 message, multiple embeds
+    const totalLength = chunks.reduce((acc, chunk) => acc += chunk.length, 0);
+    if (totalLength < EMBED_MAX_CHARACTER_LENGTH) interaction.editReply({ embeds: chunks.map((e, index) => {
+      return ({
+        author: index === 0
+          ? {
+            name: title,
+            iconURL: titleIcon
+          }
+          : null,
+        color,
+        description: e,
+        footer: index === chunks.length - 1
+          ? { text: `Requested by: ${ member.displayName }` }
+          : null
+      });
+    }) });
+
+    // Too many, needs multiple messages
+    else {
+      // Initial overview embed of command
+      await interaction.editReply({ embeds: [
+        {
+          author: {
+            name: title,
+            iconURL: titleIcon
+          },
+          color,
+          description: chunks[0]
+        }
+      ] });
+
+      // Send chunks of actual data
+      for await (const chunk of chunks.slice(1, chunks.length)) {
+        await interaction.followUp({
+          ephemeral,
+          embeds: [
+            {
+              color,
+              description: chunk,
+              footer: { text: chunks.indexOf(chunk) === (chunks.length - 1)
+                ? `Requested by: ${ member.displayName }`
+                : null }
+            }
+          ]
+        });
+      }
+    }
+  }
+};
+
 module.exports = {
   clientConfig,
   splitCamelCaseStr,
@@ -224,5 +321,6 @@ module.exports = {
   wait: sleep,
   sleep,
   getRuntime,
-  msToHumanReadableTime
+  msToHumanReadableTime,
+  doMaxLengthChunkReply
 };

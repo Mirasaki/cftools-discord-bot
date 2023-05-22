@@ -46,6 +46,7 @@ const ACCEPT_EVAL_CODE_EXECUTION = 'accept-eval-code-execution';
 const DECLINE_EVAL_CODE_EXECUTION = 'decline-eval-code-execution';
 
 const ZERO_WIDTH_SPACE_CHAR_CODE = 8203;
+const CFTOOLS_API_URL = 'https://data.cftools.cloud/v1';
 
 
 module.exports = {
@@ -89,5 +90,6 @@ module.exports = {
   ACCEPT_EVAL_CODE_EXECUTION,
   DECLINE_EVAL_CODE_EXECUTION,
 
-  ZERO_WIDTH_SPACE_CHAR_CODE
+  ZERO_WIDTH_SPACE_CHAR_CODE,
+  CFTOOLS_API_URL
 };

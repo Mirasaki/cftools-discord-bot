@@ -1,5 +1,6 @@
 const logger = require('@mirasaki/logger');
 const chalk = require('chalk');
+const { autoLbCycle } = require('../../modules/auto-lb');
 
 module.exports = (client) => {
   // Logging our process uptime to the developer
@@ -21,4 +22,7 @@ module.exports = (client) => {
 
   // Logging counts to developers
   logger.info(`Ready to serve ${ memberCount } members across ${ serverCount } servers!`);
+
+  // Initialize our auto-leaderboard module - if applicable
+  autoLbCycle(client);
 };

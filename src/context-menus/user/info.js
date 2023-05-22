@@ -8,6 +8,7 @@ const { colorResolver, getRelativeTime } = require('../../util');
 const MAX_ROLE_DISPLAY_LENGTH = 25;
 
 module.exports = new UserContextCommand({
+  enabled: false,
   clientPerms: [ 'EmbedLinks' ],
   global: true,
   cooldown: {

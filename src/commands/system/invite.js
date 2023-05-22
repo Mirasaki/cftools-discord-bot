@@ -5,6 +5,7 @@ const { ChatInputCommand } = require('../../classes/Commands');
 // and soon, Bot/App Discovery
 
 module.exports = new ChatInputCommand({
+  enabled: false,
   global: true,
   cooldown: {
     // Use guild/server cooldown instead of default member

@@ -3,6 +3,7 @@ const { ChatInputCommand } = require('../../classes/Commands');
 const { refreshSlashCommandData } = require('../../handlers/commands');
 
 module.exports = new ChatInputCommand({
+  enabled: process.env.NODE_ENV !== 'production',
   permLevel: 'Developer',
   data: { description: 'Re-deploy ApplicationCommand API data' },
   run: async (client, interaction) => {

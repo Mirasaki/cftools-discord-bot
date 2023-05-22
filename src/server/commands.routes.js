@@ -79,8 +79,6 @@ router.route('/')
       return;
     }
 
-    // console.log(clientCommands);
-
     // Return our command map if the map is populated
     res.json(
       avoidStringifyBigInt(clientCommands)
