@@ -26,7 +26,10 @@ logger.info(`${ chalk.greenBright.underline(packageIdentifierStr) } by ${ chalk.
 
 // Initializing/declaring our variables
 const initTimerStart = process.hrtime.bigint();
-const intents = config.intents.map((intent) => GatewayIntentBits[intent]);
+
+// Array of Intents your bot needs
+// https://discord.com/developers/docs/topics/gateway#gateway-intents
+const intents = [ GatewayIntentBits.Guilds ];
 const presenceActivityMap = config.presence.activities.map(
   (act) => ({
     ...act, type: ActivityType[titleCase(act.type)]

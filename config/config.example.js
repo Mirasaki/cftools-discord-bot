@@ -3,7 +3,7 @@ const { PermissionsBitField } = require('discord.js');
 const config = {
   // Bot activity
   presence: {
-  // One of online, idle, invisible, dnd
+    // One of online, idle, invisible, dnd
     status: 'online',
     activities: [
       {
@@ -20,14 +20,8 @@ const config = {
     ownerId: '290182686365188096',
 
     // Bot developers, second to highest permission level (4)
-    developers: [ '625286565375246366' ]
+    developers: [ '476630865447878667' ]
   },
-
-  // END - Everything else is internal config
-
-  // Array of Intents your bot needs
-  // https://discord.com/developers/docs/topics/gateway#gateway-intents
-  intents: [ 'Guilds' ],
 
   // Additional permissions that are considered required when generating
   // the bot invite link with /invite
