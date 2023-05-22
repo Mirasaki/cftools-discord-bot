@@ -8,11 +8,7 @@
 ![version](https://img.shields.io/github/v/release/Mirasaki/cftools-discord-bot)
 <!-- ![size](https://img.shields.io/docker/image-size/mirasaki/cftools-discord-bot) -->
 
----
-
 This is a Discord bot that fully utilizes the CFTools Data API.
-
----
 
 ## Table of Contents
 
