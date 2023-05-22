@@ -42,7 +42,7 @@ This is a Discord bot that fully utilizes the CFTools Data API.
   - Admin list with CFTools + Steam links
   - Flagged list for potential troublesome accounts/players
 
-- User-friendly in-game player auto completer
+- User-friendly in-game player auto complete
 - Broadcast messages to everyone on server
 - Direct Message (private) online players
 - Heal players
