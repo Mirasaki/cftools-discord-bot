@@ -86,15 +86,19 @@ const rest = new REST({ version: '10' })
 const clearApplicationCommandData = () => {
   logger.info('Clearing ApplicationCommand API data');
   rest.put(Routes.applicationCommands(CLIENT_ID), { body: [] });
-  rest.put(
-    Routes.applicationGuildCommands(CLIENT_ID, TEST_SERVER_GUILD_ID),
-    { body: [] }
-  )
-    .catch((err) => {
-      // Catching Missing Access error
-      logger.syserr('Error encountered while trying to clear GuildCommands in the test server, this probably means your TEST_SERVER_GUILD_ID in the .env file is invalid or the client isn\'t currently in that server');
-      logger.syserr(err);
-    });
+  if (TEST_SERVER_GUILD_ID) {
+    rest.put(
+      Routes.applicationGuildCommands(CLIENT_ID, TEST_SERVER_GUILD_ID),
+      { body: [] }
+    )
+      .catch((err) => {
+        // Catching Missing Access error
+        logger.syserr('Error encountered while trying to clear GuildCommands in the test server, this probably means your TEST_SERVER_GUILD_ID in the .env file is invalid or the client isn\'t currently in that server');
+        logger.syserr(err);
+      });
+  }
+  else logger.info('Skipping non-global commands, TEST_SERVER_GUILD_ID missing for config/.env');
+
   logger.success('Successfully reset all Slash Commands. It may take up to an hour for global changes to take effect.');
   logger.syslog(chalk.redBright('Shutting down...'));
   process.exit(1);
@@ -304,7 +308,7 @@ const refreshSlashCommandData = (client) => {
 
     // Handle our different cmd config setups
     registerGlobalCommands(client);
-    registerTestServerCommands(client);
+    if (TEST_SERVER_GUILD_ID) registerTestServerCommands(client);
     logger.endLog(`Refreshing Application ${ chalk.white('(/)') } Commands.`);
   }
   catch (error) {
