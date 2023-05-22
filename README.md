@@ -68,6 +68,8 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 
 ### Prerequisites
 
+- A CFTools [developer application](https://developer.cftools.cloud/applications)
+  - Make sure you navigate to the "Grant URL" that's displayed and authorize access to your server & resources (ban lists for example)
 - A [Discord Bot account](https://discord.com/developers/applications "Discord Developer Portal")
     1) Head over to the page linked above
     2) Click "New Application" in the top right
