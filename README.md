@@ -91,9 +91,7 @@ The quickest and easiest way to host/use this bot is by deploying it inside of a
 3. Rename `/config/.env.example` to `.env` and provide your environmental variables
 4. Rename `/config/config.example.js` to `config.js` and provide your bot configuration
 5. Rename `/config/servers.example.js` to `servers.js` and provide your server configuration
-
     - Alternatively, you can now use the `docker-compose up` command to finish setting up the project if you have the [Docker Compose CLI](https://docs.docker.com/compose/) installed
-
 6. Build the project: `docker build --tag my-discord-bot .`
 7. Start the bot: `docker run -it --env-file .env --name my-discord-bot mirasaki/cftools-discord-bot:main`
 
