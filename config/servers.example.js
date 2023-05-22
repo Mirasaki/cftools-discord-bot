@@ -6,6 +6,13 @@ module.exports = [
     // Your server api id - make sure to "grant access" through the link displayed
     // in the cftools developer portal
     CFTOOLS_SERVER_API_ID: 'YOUR_SERVER_API_ID',
+    // Your DayZ server IP
+    SERVER_IPV4: '91.109.116.15',
+    // Your DayZ Game port
+    SERVER_PORT: '2302',
+
+    // Include mod list in /server-info
+    SERVER_INFO_INCLUDE_MOD_LIST: true,
 
     // Global Leaderboard
     // How many players to display - min 10, max 100

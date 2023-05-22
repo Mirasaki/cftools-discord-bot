@@ -14,10 +14,10 @@ const { playerStatisticsCtx } = require('../../modules/statistics');
 // CFToolsID: 63dc087c3572609bfffa52af
 
 module.exports = new ChatInputCommand({
-  global: false,
+  global: true,
   cooldown: {
     type: 'member',
-    usages: 10,
+    usages: 5,
     duration: 60
   },
   data: {

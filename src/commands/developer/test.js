@@ -18,8 +18,7 @@ module.exports = new ChatInputCommand({
     default_member_permissions: 0
   },
 
-  run: (client, interaction) => {
-    // ...
+  run: async (client, interaction) => {
   }
 });
 
