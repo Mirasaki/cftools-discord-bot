@@ -28,12 +28,17 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 
 ## Showcase
 
-![dm-survivor](./assets//showcase/dm-survivor.gif)
-![stats-normal](./assets//showcase/stats_normal.png)
-![admin-player-list](./assets//showcase/admin-player-list.png)
-![kick](./assets//showcase/kick.gif)
-![flagged-player-list](./assets//showcase/flagged-player-list.png)
-![server-info](./assets//showcase/server-info.png)
+<details>
+<summary>Click to view</summary>
+
+![dm-survivor](./assets/showcase/dm-survivor.gif)
+![stats-normal](./assets/showcase/stats_normal.png)
+![admin-player-list](./assets/showcase/admin-player-list.png)
+![kick](./assets/showcase/kick.gif)
+![flagged-player-list](./assets/showcase/flagged-player-list.png)
+![server-info](./assets/showcase/server-info.png)
+
+</details>
 
 ## Features
 
