@@ -26,7 +26,7 @@ module.exports = new ChatInputCommand({
       {
         type: ApplicationCommandOptionType.String,
         name: 'identifier',
-        description: 'The player\'s Steam64, CFTools Id, BattlEyeGUID, or Bohemia Interactive Id',
+        description: 'The player\'s Steam64, BattlEye GUID, or Bohemia Interactive Id',
         required: true
       },
       serverConfigCommandOption
