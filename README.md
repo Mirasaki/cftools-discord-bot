@@ -6,6 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Docker Pulls](https://img.shields.io/docker/pulls/mirasaki/cftools-discord-bot)
 ![version](https://img.shields.io/github/v/release/Mirasaki/cftools-discord-bot)
+<!-- ![size](https://img.shields.io/docker/image-size/mirasaki/cftools-discord-bot) -->
 
 ---
 
