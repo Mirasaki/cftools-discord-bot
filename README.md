@@ -107,7 +107,7 @@ Any command can be used without any Discord permissions, as long as the bot is i
 
 The quickest and easiest way to host/use this bot is by deploying it inside of a [Docker](https://docs.docker.com/engine/install/ "Official Docker Website") container.
 
-> *Alternatively, a [**docker-compose**](https://docs.docker.com/compose/ "View docker-compose documentation") file is included for your convenience*
+> *A [**docker-compose**](https://docs.docker.com/compose/ "View docker-compose documentation") file is included for your convenience*
 
 1. Clone this repository: `git clone https://github.com/Mirasaki/cftools-discord-bot.git`
 2. Navigate inside the new folder: `cd cftools-discord-bot`
