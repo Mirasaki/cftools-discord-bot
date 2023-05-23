@@ -16,6 +16,7 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 - [Features](#features)
 - [Planned Features](#planned-features)
 - [Hosting](#hosting)
+- [Discord Permissions](#discord-permissions)
 - [Installation & Usage](#installation--usage)
   - [Prerequisites](#prerequisites)
   - [Docker](#run-as-a-docker-container-preferred)
@@ -71,6 +72,18 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 ## Hosting
 
 We have partnered with [VYKIX.com](https://portal.vykix.com/aff.php?aff=17) after observing many of our clients using VYKIX services and products. Check them out for affordable and reliable hosting, they bring the **best DayZ hosting experience possible.** 📈
+
+## Discord Permissions
+
+> This is not the permission level required to execute actions or run commands, like User, Moderator or Administrator
+
+Invite the bot to your server by navigating to the following URL (replace `YOUR_CLIENT_ID` with `CLIENT_ID` from the `/config/.env` file):
+
+`https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=0&scope=bot%20applications.commands`
+
+Any command can be used without any Discord permissions, as long as the bot is invited to your server with the `bot` and `applications.commands` scopes. You can use the template url above, or alternatively, generate an invite link in the [Discord Developer Portal](https://discord.com/developers/applications) (Your App > OAuth2 > URL Generator > `scopes: bot + applications.commands`)
+
+`AUTOMATIC_LEADERBOARD_MODULE`: This requires the following permissions in any channel this module is assigned to: `View Channel`, `Read Message History`, `Send Messages`, and `Embed Links`
 
 ## Installation & Usage
 
