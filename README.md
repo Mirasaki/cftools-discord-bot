@@ -148,7 +148,7 @@ All server configuration is done in `config/servers.js`. Multiple servers are su
 
 To add a second, or more, servers - copy-paste your entire server block and modify the configuration. Afterwards, make sure your syntax is still valid:
 
-```js
+```
   {
     ...
   }, <-- Notice the comma
