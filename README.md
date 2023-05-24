@@ -152,10 +152,10 @@ To add a second, or more, servers - copy-paste your entire server block and modi
 [
   {
     ...
-  }, <-- Notice the comma
+  }, <-- Notice the comma - always add this when adding a new server block
   {
     ...
-  } <-- Notice there's no comma for the last element
+  }
 ]
 ```
 
