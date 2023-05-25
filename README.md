@@ -183,6 +183,10 @@ To add a second, or more, servers - copy-paste your entire server block and modi
     1) Head over to the download page
     2) Download the latest LTS build available for your OS
     3) Be sure to check the box that says "Automatically install the necessary tools" when you're running the installation wizard
+- [Chromium Browser](https://www.chromium.org/Home/), if you want to use `/statistics` hit-zone heat-maps (can be disabled)
+  - Comes with most Windows installations, if not - [download](https://www.chromium.org/getting-involved/download-chromium/) the application
+  - `sudo apt-get install chromium-browser` for most Linux distributions, or use your distro's apt-alternative (package manager) - if this doesn't work you might have to point `puppeteer` to your browser executable
+  - `brew install chromium && which chromium` on Mac OS
 
 ### Run as a Docker container (preferred)
 
