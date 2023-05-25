@@ -89,17 +89,8 @@ const createHitZonesHeatMap = async (cfg, hitZones = {
   leftHand: 25,
   leftArm: 20
 }) => {
+  // Resolve our browser
   const browser = await getBrowser(cfg);
-
-  // Launch a headless browser instance
-  // if (cfg.STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN) {
-  //   // Potential non-atomic issues don't really matter
-  //   // it would launch it twice instead of once, overwriting
-  //   // the current reference, essentially clearing it
-  //   // eslint-disable-next-line require-atomic-updates
-  //   if (!browser) browser = await puppeteer.launch({ headless: 'new' });
-  // }
-  // else browser = await puppeteer.launch({ headless: 'new' });
 
   // Open a new page
   const page = await browser.newPage();
