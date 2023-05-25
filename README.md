@@ -54,6 +54,8 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 - Kick players
 - Spawn items on players
 - Teleport players
+  - Comes with support for custom (autocomplete enabled) teleport locations (`/teleport-location`), instead of having to provide coordinates (still supported in `/teleport` command)
+  - Currently looking for people to contribute, we'd like a strong default configuration for users to utilize. Check out [the config file example](./config/teleport-locations/chernarus.json) and determine if you'd like to contribute, create a pull request or contact me on Discord: Mirasaki#2287
 - Complete leaderboard integration with all available stats
 - Display detailed player/individual statistics, supports Steam64, BattlEye GUID, and Bohemia Interactive Id
 - Player hit zone % heat maps
@@ -112,6 +114,13 @@ All server configuration is done in `config/servers.js`. Multiple servers are su
     STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN: true,
     // Include mod list in /server-info
     SERVER_INFO_INCLUDE_MOD_LIST: true,
+
+    // Teleport config
+    // Should the /teleport-location command be available
+    USE_TELEPORT_LOCATIONS: true,
+    // Teleport file to use for this server configuration
+    // Loaded from /config/teleport-locations/NAME.json
+    TELEPORT_LOCATIONS_FILE_NAME: 'chernarus',
 
     // Global Leaderboard
     // How many players to display - min 10, max 100

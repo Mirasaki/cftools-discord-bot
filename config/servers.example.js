@@ -15,6 +15,10 @@ module.exports = [
     STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN: true,
     SERVER_INFO_INCLUDE_MOD_LIST: true,
 
+    // Teleport config
+    USE_TELEPORT_LOCATIONS: true,
+    TELEPORT_LOCATIONS_FILE_NAME: 'chernarus',
+
     // Leaderboard config
     LEADERBOARD_PLAYER_LIMIT: 25,
     LEADERBOARD_BLACKLIST: [
