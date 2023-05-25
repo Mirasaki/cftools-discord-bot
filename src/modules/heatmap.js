@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const { readFileSync } = require('fs');
 const h337 = require('heatmap.js');
+const logger = require('@mirasaki/logger');
 
 const heatmapWidth = 500;
 const heatmapHeight = 900;
@@ -47,7 +48,32 @@ const zoneCoordinates = {
   }
 };
 
-const createHitZonesHeatMap = async (hitZones = {
+// Headless Puppeteer Chromium browser
+// Use reference for increased speed, avoiding start up/#launch
+let browser;
+const initBrowser = async () => {
+  try {
+    browser = await puppeteer.launch({ headless: 'new' });
+  }
+  catch (err) {
+    logger.syserr('Error encountered while launching headless puppeteer Chromium browser:');
+    logger.printErr(err);
+  }
+  return browser;
+};
+
+/**
+ * @returns {Promise<puppeteer.Browser>}
+ */
+const getBrowser = async (cfg) => {
+  if (cfg.STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN) {
+    if (!browser) return await initBrowser();
+    else return browser;
+  }
+  else return await initBrowser();
+};
+
+const createHitZonesHeatMap = async (cfg, hitZones = {
   brain: 15,
   head: 35,
 
@@ -63,8 +89,17 @@ const createHitZonesHeatMap = async (hitZones = {
   leftHand: 25,
   leftArm: 20
 }) => {
+  const browser = await getBrowser(cfg);
+
   // Launch a headless browser instance
-  const browser = await puppeteer.launch({ headless: 'new' });
+  // if (cfg.STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN) {
+  //   // Potential non-atomic issues don't really matter
+  //   // it would launch it twice instead of once, overwriting
+  //   // the current reference, essentially clearing it
+  //   // eslint-disable-next-line require-atomic-updates
+  //   if (!browser) browser = await puppeteer.launch({ headless: 'new' });
+  // }
+  // else browser = await puppeteer.launch({ headless: 'new' });
 
   // Open a new page
   const page = await browser.newPage();
@@ -144,7 +179,8 @@ const createHitZonesHeatMap = async (hitZones = {
   const img = await page.screenshot({ omitBackground: true });
 
   // Close the browser instance
-  await browser.close();
+  if (!cfg.STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN) await browser.close();
+  else await page.close();
 
   // Finally, return the image
   return img;

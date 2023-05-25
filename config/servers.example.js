@@ -11,6 +11,8 @@ module.exports = [
     SERVER_PORT: 2302,
 
     // Command config
+    STATISTICS_INCLUDE_ZONES_HEATMAP: true,
+    STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN: true,
     SERVER_INFO_INCLUDE_MOD_LIST: true,
 
     // Leaderboard config

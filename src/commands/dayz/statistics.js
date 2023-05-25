@@ -69,7 +69,7 @@ module.exports = new ChatInputCommand({
 
     // Dedicated function for stat calculations
     // and sending the result to reduce cognitive complexity
-    const ctx = await playerStatisticsCtx(data);
+    const ctx = await playerStatisticsCtx(serverCfg, data);
 
     // Sending our detailed player information
     interaction.editReply(ctx);

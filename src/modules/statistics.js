@@ -5,7 +5,7 @@ const {
 const { createHitZonesHeatMap } = require('./heatmap');
 const { AttachmentBuilder } = require('discord.js');
 
-const playerStatisticsCtx = async ({
+const playerStatisticsCtx = async (cfg, {
   names,
   playtime,
   sessions,
@@ -41,11 +41,15 @@ const playerStatisticsCtx = async ({
   names.reverse();
 
   // Generate hit zone image
-  const hitZoneHeatMapImg = await createHitZonesHeatMap(hitZones);
-  const file = new AttachmentBuilder(Buffer.from(hitZoneHeatMapImg.buffer)).setName('heatmap.png');
+  const files = [];
+  if (cfg.STATISTICS_INCLUDE_ZONES_HEATMAP) {
+    const hitZoneHeatMapImg = await createHitZonesHeatMap(cfg, hitZones);
+    const file = new AttachmentBuilder(Buffer.from(hitZoneHeatMapImg.buffer)).setName('heatmap.png');
+    files.push(file);
+  }
 
   return {
-    files: [ file ],
+    files,
     embeds: [
       {
         color: colorResolver(),
@@ -67,9 +71,7 @@ const playerStatisticsCtx = async ({
           **Longest Shot:** ${ longestShot ?? 0 } m
           **Suicides:** ${ suicides ?? 0 }
           **Environmental Deaths:** ${ environmentDeaths ?? 0 }
-          **Infected Deaths:** ${ infectedDeaths ?? 0 }
-
-          **__Hit Zones:__**
+          **Infected Deaths:** ${ infectedDeaths ?? 0 }${ cfg.STATISTICS_INCLUDE_ZONES_HEATMAP ? '\n\n**__Hit Zones:__**' : '' }
         `
       }
     ]
