@@ -103,6 +103,10 @@ All server configuration is done in `config/servers.js`. Multiple servers are su
     // Your DayZ Game port
     SERVER_PORT: 2302,
 
+    // Command Configuration
+    // Include the zones heatmap image in the /statistics command
+    // Fixes issues using the command where Chromium dependencies can't be resolved
+    STATISTICS_INCLUDE_ZONES_HEATMAP: true,
     // Include mod list in /server-info
     SERVER_INFO_INCLUDE_MOD_LIST: true,
 
