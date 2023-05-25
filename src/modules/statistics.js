@@ -43,7 +43,7 @@ const playerStatisticsCtx = async (cfg, {
   // Generate hit zone image
   const files = [];
   if (cfg.STATISTICS_INCLUDE_ZONES_HEATMAP) {
-    const hitZoneHeatMapImg = await createHitZonesHeatMap(hitZones);
+    const hitZoneHeatMapImg = await createHitZonesHeatMap(cfg, hitZones);
     const file = new AttachmentBuilder(Buffer.from(hitZoneHeatMapImg.buffer)).setName('heatmap.png');
     files.push(file);
   }

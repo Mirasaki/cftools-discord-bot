@@ -107,6 +107,9 @@ All server configuration is done in `config/servers.js`. Multiple servers are su
     // Include the zones heatmap image in the /statistics command
     // Fixes issues using the command where Chromium dependencies can't be resolved
     STATISTICS_INCLUDE_ZONES_HEATMAP: true,
+    // Keep the Puppeteer Chromium browser open - this generates the
+    // heatmap WAY faster, but uses more RAM (~+20 MB)
+    STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN: true,
     // Include mod list in /server-info
     SERVER_INFO_INCLUDE_MOD_LIST: true,
 
