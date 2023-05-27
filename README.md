@@ -197,6 +197,7 @@ The quickest and easiest way to host/use this bot is by deploying it inside of a
 1. Clone this repository: `git clone https://github.com/Mirasaki/cftools-discord-bot.git`
 2. Navigate inside the new folder: `cd cftools-discord-bot`
 3. Rename `/config/.env.example` to `.env` and provide your environmental variables
+    - Windows users often experience issues with this file, if you're getting errors that the env file can't be found, or `Expected path argument to be of type string` - check out [this timestamped video](https://youtu.be/6rOCUZ8opLM?t=42)
 4. Rename `/config/config.example.js` to `config.js` and provide your bot configuration
 5. Rename `/config/servers.example.js` to `servers.js` and provide your server configuration
     - Alternatively, you can now use the `docker-compose up` command to finish setting up the project if you have the [Docker Compose CLI](https://docs.docker.com/compose/) installed
