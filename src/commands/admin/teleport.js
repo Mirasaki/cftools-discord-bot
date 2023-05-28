@@ -50,8 +50,8 @@ module.exports = new ChatInputCommand({
     const { emojis } = client.container;
     const serverCfg = getServerConfigCommandOptionValue(interaction);
     const x = options.getNumber('x-coordinate');
-    const y = options.getNumber('y-coordinate');
-    const z = options.getNumber('z-coordinate');
+    const z = options.getNumber('y-coordinate');
+    const y = options.getNumber('z-coordinate');
 
     // Deferring our reply
     await interaction.deferReply();
