@@ -144,17 +144,21 @@ const getTeleportLocations = (serverCfg) => {
   return teleportLocations;
 };
 
-const handleCFToolsError = (interaction, err) => {
+const handleCFToolsError = (interaction, err, followUpInstead = false) => {
   const { member } = interaction;
+  let str;
   if (err instanceof cftSDK.ResourceNotFound) {
-    interaction.editReply(`${ emojis.error } ${ member }, couldn't find specified resource - resource might be unknown to client, or it's invalid`);
+    str = `${ emojis.error } ${ member }, couldn't find specified resource - resource might be unknown to client, or it's invalid`;
   }
   else if (err instanceof cftSDK.GrantRequired) {
-    interaction.editReply(`${ emojis.error } ${ member }, missing Grant for resource - please navigate to your CFTools developer application and navigate to the **Grant URL** displayed there to grant access to this resource - this command has been cancelled`);
+    str = `${ emojis.error } ${ member }, missing Grant for resource - please navigate to your CFTools developer application and navigate to the **Grant URL** displayed there to grant access to this resource - this command has been cancelled`;
   }
   else {
-    interaction.editReply({ content: `${ emojis.error } ${ member }, encountered an error while fetching data: ${ err.message }` });
+    str = `${ emojis.error } ${ member }, unexpected error encountered: ${ err.message }`;
   }
+
+  if (followUpInstead) interaction.followUp(str);
+  else interaction.editReply(str);
 };
 
 // Fetch API token, valid for 24 hours, don't export function
