@@ -11,4 +11,4 @@ services:
       # Anonymous volume
       - /app/node_modules
     env_file:
-      - ./.env
+      - ./config/.env
