@@ -69,7 +69,8 @@ module.exports = new ChatInputCommand({
         serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
         session,
         coordinates: {
-          x, y, z
+          // Why does the SDK switch y and z? =)
+          x, y: z, z: y
         }
       });
     }
