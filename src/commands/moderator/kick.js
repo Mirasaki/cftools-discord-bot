@@ -11,7 +11,7 @@ const { ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = new ChatInputCommand({
   global: true,
-  permLevel: 'Administrator',
+  permLevel: 'Moderator',
   data: {
     description: 'Kick a player that is currently online',
     options: [

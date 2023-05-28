@@ -11,7 +11,7 @@ const { ServerApiId } = require('cftools-sdk');
 
 module.exports = new ChatInputCommand({
   global: true,
-  permLevel: 'Administrator',
+  permLevel: 'Moderator',
   data: {
     description: 'Heal a player that is currently online',
     options: [ requiredServerConfigCommandOption, requiredPlayerSessionOption ]
