@@ -37,7 +37,7 @@ module.exports = new ChatInputCommand({
     // Resolve location
     const tpLocation = getTeleportLocationOptionValue(interaction);
     if (!tpLocation) {
-      interaction.reply(`${ emojis.error } ${ member }, \`teleport-location\` can't be resolved. This could be because you changed server while having loaded the \`teleport-location\` option, please try again - this command has been cancelled`);
+      interaction.reply(`${ emojis.error } ${ member }, \`teleport-location\` can't be resolved. This usually happens when you change selected server while having loaded the \`teleport-location\` option, please try again - this command has been cancelled`);
       return;
     }
 
