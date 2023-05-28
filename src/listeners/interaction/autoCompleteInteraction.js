@@ -19,13 +19,16 @@ module.exports = async (client, interaction) => {
 
   // Get our command name query
   const query = interaction.options.getFocused()?.toLowerCase() || '';
-  const activeOption = interaction.options._hoistedOptions.find(({ focused }) => focused === true)?.name;
-  const autoCompleteQueryHandler = autoCompletes.get(activeOption);
+  const activeOption = interaction.options._hoistedOptions.find(({ focused }) => focused === true)?.name ?? '';
+  let autoCompleteQueryHandler = autoCompletes.get(activeOption);
 
   // Check if a query handler is found
   if (!autoCompleteQueryHandler) {
-    logger.syserr(`Missing AutoComplete query handler for the "${ activeOption }" option in the ${ commandName } command`);
-    return;
+    if (activeOption.startsWith('player-')) autoCompleteQueryHandler = autoCompletes.get('player');
+    else {
+      logger.syserr(`Missing AutoComplete query handler for the "${ activeOption }" option in the ${ commandName } command`);
+      return;
+    }
   }
 
   // Getting the result
