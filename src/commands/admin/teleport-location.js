@@ -26,7 +26,15 @@ module.exports = new ChatInputCommand({
     // Destructuring and assignments
     const { member } = interaction;
     const { emojis } = client.container;
+
+    // Check active/enabled
     const serverCfg = getServerConfigCommandOptionValue(interaction);
+    if (!serverCfg.USE_TELEPORT_LOCATIONS) {
+      interaction.reply(`${ emojis.error } ${ member }, teleport locations aren't enabled for this server configuration`);
+      return;
+    }
+
+    // Resolve location
     const tpLocation = getTeleportLocationOptionValue(interaction);
     if (!tpLocation) {
       interaction.reply(`${ emojis.error } ${ member }, \`teleport-location\` can't be resolved. This could be because you changed server while having loaded the \`teleport-location\` option, please try again - this command has been cancelled`);
@@ -62,7 +70,8 @@ module.exports = new ChatInputCommand({
         serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
         session,
         coordinates: {
-          x, y, z
+          // Why does the SDK switch y and z? =)
+          x, y: z, z: y
         }
       });
     }
