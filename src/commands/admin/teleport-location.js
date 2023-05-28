@@ -12,7 +12,7 @@ const { ChatInputCommand } = require('../../classes/Commands');
 const { ServerApiId } = require('cftools-sdk');
 
 module.exports = new ChatInputCommand({
-  global: false,
+  global: true,
   permLevel: 'Administrator',
   data: {
     description: 'Teleport a player that is currently online to customizable locations',
