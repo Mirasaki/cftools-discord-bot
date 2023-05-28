@@ -1,5 +1,6 @@
 const cftSDK = require('cftools-sdk');
 const emojis = require('../../config/emojis.json');
+const { existsSync, readFileSync } = require('fs');
 
 const APPLICATION_JSON = 'application/json';
 
@@ -19,13 +20,13 @@ const cftClient = new cftSDK.CFToolsClientBuilder()
   .build();
 
 // CFTools servers- command option
-const serverConfigCommandChoicesIdentifier = 'server';
+const serverConfigCommandOptionIdentifier = 'server';
 const serverConfigCommandChoices = serverConfig
   .map(({ CFTOOLS_SERVER_API_ID, NAME }) => ({
     name: NAME, value: CFTOOLS_SERVER_API_ID
   }));
 const serverConfigCommandOption = {
-  name: serverConfigCommandChoicesIdentifier,
+  name: serverConfigCommandOptionIdentifier,
   description: 'Which server to display',
   type: ApplicationCommandOptionType.String,
   required: false,
@@ -49,9 +50,9 @@ const getServerConfigCommandOptionValue = (interaction) => {
 };
 
 // Player Session Option
-const playerSessionChoicesIdentifier = 'player';
+const playerSessionOptionIdentifier = 'player';
 const playerSessionOption = {
-  name: playerSessionChoicesIdentifier,
+  name: playerSessionOptionIdentifier,
   description: 'The in-game player',
   type: ApplicationCommandOptionType.String,
   required: false,
@@ -64,7 +65,7 @@ const requiredPlayerSessionOption = {
 const getPlayerSessionOptionValue = async (interaction) => {
   const { options } = interaction;
   const serverCfg = getServerConfigCommandOptionValue(interaction);
-  const sessionId = options.getString(playerSessionChoicesIdentifier);
+  const sessionId = options.getString(playerSessionOptionIdentifier);
   const sessions = await cftClient
     .listGameSessions({ serverApiId: cftSDK.ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID) });
   return sessions.find((e) => e.id === sessionId);
@@ -78,6 +79,70 @@ const survivorSessionOptionValues = async (CFTOOLS_SERVER_API_ID) => {
   }));
 };
 
+
+// Teleport Location Option
+const teleportLocationOptionIdentifier = 'teleport-location';
+const teleportLocationOption = {
+  name: teleportLocationOptionIdentifier,
+  description: 'The pre-configured location to teleport the player to',
+  type: ApplicationCommandOptionType.String,
+  required: false,
+  autocomplete: true
+};
+const requiredTeleportLocationOption = {
+  ...teleportLocationOption,
+  required: true
+};
+const getTeleportLocationOptionValue = (interaction) => {
+  const { options } = interaction;
+  const serverCfg = getServerConfigCommandOptionValue(interaction);
+  if (!serverCfg.USE_TELEPORT_LOCATIONS) return null;
+
+  // Check file
+  const tpLocationsFilePath = `./config/teleport-locations/${ serverCfg.TELEPORT_LOCATIONS_FILE_NAME }.json`;
+  const tpLocationsFileExists = existsSync(tpLocationsFilePath);
+  if (!tpLocationsFileExists) {
+    logger.syserr(`Teleport locations file (${ serverCfg.TELEPORT_LOCATIONS_FILE_NAME }) set in the "TELEPORT_LOCATIONS_FILE_NAME" server configuration doesn't exist`);
+    return null;
+  }
+
+  // Check is ok
+  const teleportLocations = getTeleportLocations(serverCfg);
+  if (!teleportLocations || !teleportLocations[0]) return null;
+
+  // Resolve
+  const tpIndexStr = options.getString(teleportLocationOptionIdentifier);
+  const tpIndex = Number(tpIndexStr);
+  if (isNaN(tpIndex)) return null;
+  const tpLocation = teleportLocations.at(tpIndex);
+  return tpLocation ?? null;
+};
+const getTeleportLocations = (serverCfg) => {
+  // Check file
+  const tpLocationsFilePath = `./config/teleport-locations/${ serverCfg.TELEPORT_LOCATIONS_FILE_NAME }.json`;
+  const tpLocationsFileExists = existsSync(tpLocationsFilePath);
+  if (!tpLocationsFileExists) {
+    logger.syserr(`Teleport locations file (${ serverCfg.TELEPORT_LOCATIONS_FILE_NAME }) set in the "TELEPORT_LOCATIONS_FILE_NAME" server configuration doesn't exist`);
+    return null;
+  }
+
+  // Resolve data
+  let teleportLocations = [];
+  try {
+    const jsonDataStr = readFileSync(tpLocationsFilePath);
+    const jsonData = JSON.parse(jsonDataStr);
+    if (!Array.isArray(jsonData)) throw Error('Expected file contents to be array');
+    teleportLocations = jsonData;
+  }
+  catch (err) {
+    logger.syserr('Error encountered while reading file set in the "TELEPORT_LOCATIONS_FILE_NAME" server configuration:');
+    logger.printErr(err);
+    return null;
+  }
+
+  // Return arr
+  return teleportLocations;
+};
 
 const handleCFToolsError = (interaction, err) => {
   const { member } = interaction;
@@ -204,16 +269,21 @@ module.exports = {
   CFTOOLS_API_SECRET,
   CFTOOLS_API_APPLICATION_ID,
   serverConfig,
-  serverConfigCommandChoicesIdentifier,
+  serverConfigCommandOptionIdentifier,
   serverConfigCommandChoices,
   serverConfigCommandOption,
   requiredServerConfigCommandOption,
   getServerConfigCommandOptionValue,
-  playerSessionChoicesIdentifier,
+  playerSessionOptionIdentifier,
   playerSessionOption,
   requiredPlayerSessionOption,
   getPlayerSessionOptionValue,
   survivorSessionOptionValues,
+  teleportLocationOptionIdentifier,
+  teleportLocationOption,
+  requiredTeleportLocationOption,
+  getTeleportLocationOptionValue,
+  getTeleportLocations,
   cftClient,
   handleCFToolsError,
   getAPIToken,

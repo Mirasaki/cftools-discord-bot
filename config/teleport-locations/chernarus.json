@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Altar",
+    "coordinates": [
+      8170.614746,
+      474.052460,
+      9110.527344
+    ]
+  },
+  {
+    "name": "Kotka",
+    "coordinates": [
+      5700.507813,
+      327.831665,
+      6903.870117
+    ]
+  },
+  {
+    "name": "Zelenogorsk",
+    "coordinates": [
+      2599.177002,
+      195.030060,
+      5101.145996
+    ]
+  },
+  {
+    "name": "Devil's Castle",
+    "coordinates": [
+      896.649414,
+      406.026917,
+      11418.560547
+    ]
+  },
+  {
+    "name": "Severograd",
+    "coordinates": [
+      7971.697754,
+      112.126305,
+      12681.623047
+    ]
+  },
+  {
+    "name": "Krasonstav",
+    "coordinates": [
+      11117.527344,
+      199.368347,
+      12287.526367
+    ]
+  },
+  {
+    "name": "NWA - North-West Airfield",
+    "coordinates": [
+      4452.842285, 
+      338.922455, 
+      10138.835938
+    ]
+  },
+  {
+    "name": "NEA - North-East Airfield",
+    "coordinates": [
+      11887.475586,
+      140.012497,
+      12464.815430
+    ]
+  },
+  {
+    "name": "Klen",
+    "coordinates": [
+      11479.462891, 
+      342.263763, 
+      11335.789063
+    ]
+  },
+  {
+    "name": "Berezino",
+    "coordinates": [
+      12313.470703, 
+      11.296741, 
+      9700.732422
+    ]
+  },
+  {
+    "name": "Solnechny",
+    "coordinates": [
+      13452.717773, 
+      6.141191, 
+      6245.988281
+    ]
+  },
+  {
+    "name": "Kamyshovo",
+    "coordinates": [
+      12056.701172, 
+      6.090603, 
+      3494.522461
+    ]
+  },
+  {
+    "name": "Elektorzavodsk",
+    "coordinates": [
+      10269.119141, 
+      5.765578, 
+      2156.416504
+    ]
+  },
+  {
+    "name": "Chernogorsk",
+    "coordinates": [
+      6455.633301, 
+      6.000010, 
+      2556.477539
+    ]
+  },
+  {
+    "name": "Balota Airfield",
+    "coordinates": [
+      4817.540039, 
+      8.704959, 
+      2585.419922
+    ]
+  },
+  {
+    "name": "Kamenka",
+    "coordinates": [
+      1878.224976, 
+      6.192459, 
+      2245.751953
+    ]
+  },
+  {
+    "name": "Vybor",
+    "coordinates": [
+      3813.912598, 
+      310.934540, 
+      8878.819336
+    ]
+  },
+  {
+    "name": "Stary Sobor",
+    "coordinates": [
+      6148.399902, 
+      301.041931, 
+      7716.379883
+    ]
+  }
+]
