@@ -55,6 +55,8 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 - Spawn items on players
 - Teleport players
   - Comes with support for custom (autocomplete enabled) teleport locations (`/teleport-location`), instead of having to provide coordinates (still supported in `/teleport` command)
+  - Teleport multiple or all to online player
+  - Teleport multiple or all to customizable locations
   - Currently looking for people to contribute, we'd like a strong default configuration for users to utilize. Check out [the config file example](./config/teleport-locations/chernarus.json) and determine if you'd like to contribute, create a pull request or contact me on Discord: Mirasaki#2287
 - Complete leaderboard integration with all available stats
 - Display detailed player/individual statistics, supports Steam64, BattlEye GUID, and Bohemia Interactive Id
