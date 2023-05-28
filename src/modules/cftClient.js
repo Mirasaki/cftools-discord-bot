@@ -62,10 +62,10 @@ const requiredPlayerSessionOption = {
   ...playerSessionOption,
   required: true
 };
-const getPlayerSessionOptionValue = async (interaction) => {
+const getPlayerSessionOptionValue = async (interaction, id = playerSessionOptionIdentifier) => {
   const { options } = interaction;
   const serverCfg = getServerConfigCommandOptionValue(interaction);
-  const sessionId = options.getString(playerSessionOptionIdentifier);
+  const sessionId = options.getString(id);
   const sessions = await cftClient
     .listGameSessions({ serverApiId: cftSDK.ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID) });
   return sessions.find((e) => e.id === sessionId);
@@ -264,6 +264,42 @@ const kickPlayer = async (
     return null;
   }
 };
+
+// Position data isn't currently included in cftools-sdk =(
+// JK, FlorianSW added it =)
+// const gsmCache = new Map();
+// const getGSMList = async (CFTOOLS_SERVER_API_ID) => {
+//   // Cache
+//   const cacheData = gsmCache.get(CFTOOLS_SERVER_API_ID);
+//   if (cacheData) return cacheData;
+
+//   // Fetch
+//   let data;
+//   try {
+//     data = await fetch(
+//       `https://data.cftools.cloud/v1/server/${ CFTOOLS_SERVER_API_ID }/GSM/list`,
+//       {
+//         method: 'GET',
+//         headers: { Authorization: `Bearer ${ await getAPIToken() }` }
+//       }
+//     );
+//     // Error responses error on #json()
+//     data = (await data.json());
+//     data &&= data.sessions ?? [];
+
+//     // Cache and schedule timeout to clear
+//     gsmCache.set(CFTOOLS_SERVER_API_ID, data);
+//     setTimeout(() => {
+//       gsmCache.delete(CFTOOLS_SERVER_API_ID);
+//     }, MS_IN_ONE_SECOND * 15);
+//   }
+//   catch (err) {
+//     logger.syserr('Error encounter while fetching GSM list');
+//     logger.printErr(err);
+//     return null;
+//   }
+//   return data;
+// };
 
 module.exports = {
   CFTOOLS_API_SECRET,

@@ -54,6 +54,7 @@ module.exports = new ChatInputCommand({
     }
 
     // Resolve data
+    // Haha optional fields be like
     let coords;
     const { live } = targetSession;
     if (live) {
