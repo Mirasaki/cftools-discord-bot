@@ -41,7 +41,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "heatmap.js": "^2.0.5",
-    "puppeteer": "^20.3.0"
+    "puppeteer": "^20.4.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
