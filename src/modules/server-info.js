@@ -22,7 +22,7 @@ const resolveFlags = ({ attributes }) => {
 const calculateDayNightTime = (serverTimeAcceleration, serverNightTimeAcceleration) => {
   const minutesPerHour = 60;
   // Calculate the duration of a day in minutes
-  const dayDuration = (24 / serverTimeAcceleration) * minutesPerHour;
+  const dayDuration = (12 / serverTimeAcceleration) * minutesPerHour;
   // Calculate the duration of a night in minutes
   const nightDuration = (dayDuration / serverNightTimeAcceleration);
 
