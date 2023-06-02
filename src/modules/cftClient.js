@@ -12,6 +12,10 @@ const serverConfig = require('../../config/servers.js');
 const { ApplicationCommandOptionType } = require('discord.js');
 const { MS_IN_ONE_HOUR, CFTOOLS_API_URL } = require('../constants');
 const logger = require('@mirasaki/logger');
+const { debugLog } = require('../util');
+
+debugLog(`Loaded server config, found ${ serverConfig.length } configurations`);
+debugLog('Initialize CFTools API client');
 
 // Creating a unique client for every entry
 const cftClient = new cftSDK.CFToolsClientBuilder()
@@ -49,6 +53,9 @@ const getServerConfigCommandOptionValue = (interaction) => {
   return serverCfg;
 };
 
+debugLog(`Registered ${ serverConfigCommandChoices.length } command server options:`);
+debugLog(serverConfigCommandChoices);
+
 // Player Session Option
 const playerSessionOptionIdentifier = 'player';
 const playerSessionOption = {
@@ -68,7 +75,10 @@ const getPlayerSessionOptionValue = async (interaction, id = playerSessionOption
   const sessionId = options.getString(id);
   const sessions = await cftClient
     .listGameSessions({ serverApiId: cftSDK.ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID) });
-  return sessions.find((e) => e.id === sessionId);
+  const targetSession = sessions.find((e) => e.id === sessionId);
+  debugLog('Resolved command player option:');
+  debugLog(targetSession);
+  return targetSession;
 };
 const survivorSessionOptionValues = async (CFTOOLS_SERVER_API_ID) => {
   const sessions = await cftClient
@@ -144,7 +154,15 @@ const getTeleportLocations = (serverCfg) => {
   return teleportLocations;
 };
 
+for (const cfg of serverConfig) {
+  debugLog(`Registered ${ getTeleportLocations(cfg).length } teleport locations for server ${ cfg.NAME }:`);
+  debugLog(getTeleportLocations(cfg));
+}
+
 const handleCFToolsError = (interaction, err, followUpInstead = false) => {
+  debugLog('CFTools API Error encountered:');
+  debugLog(err);
+
   const { member } = interaction;
   let str;
   if (err instanceof cftSDK.ResourceNotFound) {
@@ -183,10 +201,12 @@ let CFTOOLS_API_TOKEN;
 const tokenExpirationMS = MS_IN_ONE_HOUR * 23;
 const getAPIToken = async () => {
   if (!CFTOOLS_API_TOKEN) {
+    debugLog('Creating CFTools API token');
     // eslint-disable-next-line require-atomic-updates
     CFTOOLS_API_TOKEN = await fetchAPIToken();
     // Update our token every 23 hours
     setInterval(async () => {
+      debugLog('Creating CFTools API token');
       CFTOOLS_API_TOKEN = await fetchAPIToken();
     }, tokenExpirationMS);
   }

@@ -8,6 +8,7 @@ const {
 } = require('../../modules/cftClient');
 const { ChatInputCommand } = require('../../classes/Commands');
 const { ServerApiId } = require('cftools-sdk');
+const { debugLog } = require('../../util');
 
 module.exports = new ChatInputCommand({
   global: true,
@@ -76,6 +77,9 @@ module.exports = new ChatInputCommand({
       const {
         x, y, z
       } = coords;
+      debugLog(`Teleporting ${ session.playerName } to ${ targetSession.playerName }, target session ref:`);
+      debugLog(targetSession);
+      debugLog(coords);
       await cftClient.teleport({
         serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
         session,
