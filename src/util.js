@@ -299,7 +299,7 @@ const doMaxLengthChunkReply = async (
       // Send chunks of actual data
       for await (const chunk of chunks.slice(1, chunks.length)) {
         await interaction.followUp({
-        ephemeral,
+          ephemeral,
           embeds: [
             {
               color,
