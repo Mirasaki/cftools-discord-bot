@@ -316,10 +316,7 @@ const doMaxLengthChunkReply = async (
 };
 
 const debugLog = (ctx) => {
-  if (
-    process.env.NODE_ENV === 'production'
-    || process.env.DEBUG_ENABLED !== 'true'
-  ) return;
+  if (process.env.DEBUG_ENABLED !== 'true') return;
   if (Array.isArray(ctx)) console.table(ctx);
   else if (typeof ctx === 'object') console.dir(ctx, { depth: Infinity });
   else logger.debug(ctx);
