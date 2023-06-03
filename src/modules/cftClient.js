@@ -155,6 +155,10 @@ const getTeleportLocations = (serverCfg) => {
 };
 
 for (const cfg of serverConfig) {
+  if (!cfg.TELEPORT_LOCATIONS_FILE_NAME) {
+    debugLog(`Skipping registering teleport locations for ${ cfg.NAME }, "TELEPORT_LOCATIONS_FILE_NAME" is disabled`);
+    continue;
+  }
   debugLog(`Registered ${ getTeleportLocations(cfg).length } teleport locations for server ${ cfg.NAME }:`);
   debugLog(getTeleportLocations(cfg));
 }
