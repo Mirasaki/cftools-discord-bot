@@ -1,0 +1,1 @@
+START npm run pm2:logs
