@@ -2,6 +2,8 @@
  * SEE the README.md file for explanation and details
  */
 
+const { clientConfig } = require('../src/util');
+
 module.exports = [
   {
     // Server data
@@ -15,6 +17,35 @@ module.exports = [
     STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN: true,
     STATISTICS_HIDE_PLAYER_NAME_HISTORY: true,
     SERVER_INFO_INCLUDE_MOD_LIST: true,
+
+    // Live Discord > DayZ chat feed configuration
+    USE_CHAT_FEED: true,
+    CHAT_FEED_CHANNEL_IDS: [ '806479539110674472' ],
+    CHAT_FEED_REQUIRED_ROLE_IDS: [],
+    CHAT_FEED_USE_DISCORD_PREFIX: true,
+    CHAT_FEED_USE_DISPLAY_NAME: true,
+    CHAT_FEED_MESSAGE_COOLDOWN: 2.5,
+    CHAT_FEED_MAX_DISPLAY_NAME_LENGTH: 20,
+    CHAT_FEED_DISCORD_TAGS: [
+      {
+        roleIds: [ clientConfig.permissions.ownerId ],
+        displayTag: '[OWNER]'
+      },
+      {
+        roleIds: clientConfig.permissions.administratorRoleIds,
+        displayTag: '[ADMIN]'
+      },
+      {
+        roleIds: clientConfig.permissions.moderatorRoleIds,
+        displayTag: '[MOD]'
+      },
+      {
+        // Matches everyone
+        roleIds: [],
+        displayTag: '[SURVIVOR]',
+        enabled: false
+      }
+    ],
 
     // Teleport config
     USE_TELEPORT_LOCATIONS: true,

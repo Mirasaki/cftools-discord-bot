@@ -42,6 +42,7 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 
 ## Features
 
+- Discord > DayZ live chat feed - comes with a tag system and is **very** customizable
 - Player Lists
 
   - Public list
@@ -67,7 +68,6 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 
 ## Planned Features
 
-- Public channel that forwards Discord messages to DayZ (configurable module)
 - Execute raw RCon commands - I'm looking for someone that is very knowledgeable on available RCon command
 - Dedicated Server Status channel, overview with online/offline status
 - Manage Priority Queue
@@ -149,6 +149,51 @@ All server configuration is done in `config/servers.js`. Multiple servers are su
     // Include mod list in /server-info
     SERVER_INFO_INCLUDE_MOD_LIST: true,
 
+    // Live Discord > DayZ chat feed configuration
+    // Requires the privileged "Message Content Intent" (discord.dev > App > Bot > Message Content Intent)
+    // Max message length is 256 characters, and a members tags and display name count towards that
+    // Enable or disable the chat feed module
+    USE_CHAT_FEED: true,
+    // The channels where members can send messages that get forwarded to DayZ
+    CHAT_FEED_CHANNEL_IDS: [ '806479539110674472' ],
+    // List of roles that a member needs to have before their message
+    // gets broadcasted to DayZ. Public if empty. With 2 or more role ids,
+    // the check operator is AND not OR, meaning all roles defined here are required
+    CHAT_FEED_REQUIRED_ROLE_IDS: [],
+    // Disable the "(Discord)" prefix in the in-game message
+    CHAT_FEED_USE_DISCORD_PREFIX: true,
+    // By default displayed the members nickname, can be disabled to
+    // display username instead
+    CHAT_FEED_USE_DISPLAY_NAME: true,
+    // Members messages get forwarded to DayZ once every X
+    // Set to false to disable throttling
+    CHAT_FEED_MESSAGE_COOLDOWN: 2.5,
+    // With the Discord role tag system (next configuration value) you might want to configure the max
+    // allowed characters that are displayed for member display names
+    CHAT_FEED_MAX_DISPLAY_NAME_LENGTH: 20,
+    // List of Discord role tags to display in-game
+    // If member has multiple roles the first role tag will be used
+    CHAT_FEED_DISCORD_TAGS: [
+      {
+        roleIds: [ config.permissions.ownerId ],
+        displayTag: '[OWNER]'
+      },
+      {
+        roleIds: config.permissions.administratorRoleIds,
+        displayTag: '[ADMIN]'
+      },
+      {
+        roleIds: config.permissions.moderatorRoleIds,
+        displayTag: '[MOD]'
+      },
+      {
+        // Matches everyone
+        roleIds: [],
+        displayTag: '[SURVIVOR]',
+        enabled: false
+      }
+    ],
+
     // Teleport config
     // Should the /teleport-location command be available
     USE_TELEPORT_LOCATIONS: true,
@@ -202,7 +247,7 @@ All server configuration is done in `config/servers.js`. Multiple servers are su
 
 To add a second, or more, servers - copy-paste your entire server block and modify the configuration. Afterwards, make sure your syntax is still valid:
 
-```
+```javascript
 [
   {
     ...

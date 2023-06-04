@@ -29,7 +29,11 @@ const initTimerStart = process.hrtime.bigint();
 
 // Array of Intents your bot needs
 // https://discord.com/developers/docs/topics/gateway#gateway-intents
-const intents = [ GatewayIntentBits.Guilds ];
+const intents = [
+  GatewayIntentBits.Guilds,
+  GatewayIntentBits.GuildMessages,
+  GatewayIntentBits.MessageContent
+];
 const presenceActivityMap = config.presence.activities.map(
   (act) => ({
     ...act, type: ActivityType[titleCase(act.type)]
@@ -38,7 +42,7 @@ const presenceActivityMap = config.presence.activities.map(
 
 // Building our discord.js client
 const client = new Client({
-  intents: intents,
+  intents,
   presence: {
     status: PresenceUpdateStatus[config.presence.status] || PresenceUpdateStatus['online'],
     activities: presenceActivityMap
