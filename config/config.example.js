@@ -16,6 +16,10 @@ const config = {
 
   // Permission config
   permissions: {
+    // Array of Moderator role ids
+    moderatorRoleIds: [ '968222116682022962', '1112021605267288096' ],
+    // Array of Administrator role ids
+    administratorRoleIds: [ '793898367243386940' ],
     // Bot Owner, highest permission level (5)
     ownerId: '290182686365188096',
 
