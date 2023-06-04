@@ -125,6 +125,10 @@ All server configuration is done in `config/servers.js`. Multiple servers are su
     TELEPORT_LOCATIONS_FILE_NAME: 'chernarus',
 
     // Global Leaderboard
+    // What stat should be used as the default sorting stat,
+    // used when a statistic command option isn't provided
+    // One of LEADERBOARD_STATS (further down)
+    LEADERBOARD_DEFAULT_SORTING_STAT: 'OVERALL',
     // How many players to display - min 10, max 100
     LEADERBOARD_PLAYER_LIMIT: 25,
     // Players to exclude from leaderboard

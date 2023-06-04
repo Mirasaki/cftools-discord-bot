@@ -36,8 +36,14 @@ module.exports = new ChatInputCommand({
 
     // Declarations
     const serverCfg = getServerConfigCommandOptionValue(interaction);
-    const statStr = options.getString(statisticAutoCompleteOptionIdentifier);
-    const statToGet = Statistic[statStr];
+    const statStr = options.getString(statisticAutoCompleteOptionIdentifier)
+      ?? serverCfg.LEADERBOARD_DEFAULT_SORTING_STAT
+      ?? 'OVERALL';
+    const statToGet = Statistic[
+      statStr === 'OVERALL'
+        ? 'KILL_DEATH_RATIO'
+        : statStr
+    ];
 
     // Deferring our interaction
     // due to possible API latency
@@ -46,8 +52,7 @@ module.exports = new ChatInputCommand({
     // Default
     // No option provided OR
     // 'overall' option specified
-    const isDefaultQuery = !statToGet || statStr === 'OVERALL';
-
+    const isDefaultQuery = statStr === 'OVERALL';
 
     // Getting our player data count
     let playerLimit = Number(serverCfg.LEADERBOARD_PLAYER_LIMIT);
@@ -67,7 +72,9 @@ module.exports = new ChatInputCommand({
         .getLeaderboard({
           serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
           order: 'ASC',
-          statistic: statToGet ?? Statistic.KILL_DEATH_RATIO,
+          statistic: statToGet ?? (
+            Statistic[serverCfg.LEADERBOARD_DEFAULT_SORTING_STAT ?? 'KILL_DEATH_RATIO']
+          ),
           // Always use max limit, since we remove blacklist entries
           limit: 100
         });
