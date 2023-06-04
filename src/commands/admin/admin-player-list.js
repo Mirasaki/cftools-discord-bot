@@ -59,7 +59,7 @@ module.exports = new ChatInputCommand({
     }
 
     // Destructure sessions from data and map our player strings
-    const playerLinkMap = sessions.map((session) => `[• ${ session.profile?.private === true ? '🕵️' : '' }${ session.playerName ?? 'Survivor' }](https://app.cftools.cloud/profile/${ session.cftoolsId.id } "CFTools Cloud Profile") ([\`${ session.profile?.name ?? 'Unknown' }\`](https://steamcommunity.com/profiles/${ session.steamId.id }/ "Steam Account Profile"))`);
+    const playerLinkMap = sessions.map((session) => `• \`${ session.steamId.id }\` [${ session.profile?.private === true ? '🕵️' : '' }${ session.playerName ?? 'Survivor' }](https://app.cftools.cloud/profile/${ session.cftoolsId.id } "CFTools Cloud Profile") ([\`${ session.profile?.name ?? 'Unknown' }\`](https://steamcommunity.com/profiles/${ session.steamId.id }/ "Steam Account Profile"))`);
     const output = `**Players online:** ${ sessions.length }\n\n${ playerLinkMap.join('\n\n') ?? '-' }`;
 
     // Ok, we might have 1 line, or over 15k characters
