@@ -20,6 +20,7 @@ module.exports = [
     TELEPORT_LOCATIONS_FILE_NAME: 'chernarus',
 
     // Leaderboard config
+    LEADERBOARD_DEFAULT_SORTING_STAT: 'OVERALL',
     LEADERBOARD_PLAYER_LIMIT: 25,
     LEADERBOARD_BLACKLIST: [
       '6284d7a30873a63f22e34f34',
