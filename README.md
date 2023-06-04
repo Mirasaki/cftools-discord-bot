@@ -95,18 +95,16 @@ Any command can be used without any Discord permissions, as long as the bot is i
 
 These are permission levels that are used internally by the bot to determine the permission level of any given user and determine which commands they can use. Available permissions levels are:
 
-> *You can modify Developers and Bot Owners in `/config/config.js`, this is optional*
-
-> *Configuring Discord roles for Moderators and Administrators is a planned feature*
+> *You can modify Moderators, Administrators, Developers and Bot Owners in `/config/config.js`, this is optional*
 
 - 0 - User - This is the default permission levels, everyone has this this - doesn't have access to any dangerous commands
-- 1 - Moderator - The moderator permission level has access to moderation commands like `/heal`, `/kick`, and `/ban` in the future. Anyone that has the Discord permissions `Kick Members` and `Ban Members` is considered a Moderator
-- 2 - Administrator - The Administrator permission level is the highest permission level that can be assigned through Discord. Anyone with the Discord permission `Administrator` is considered an Administrator internally and will have access to dangerous/sensitive commands like `/broadcast`, `/dm-survivor`, and `/spawn-item`
+- 1 - Moderator - The moderator permission level has access to moderation commands like `/heal`, `/kick`, and `/ban` in the future. Anyone that has the Discord permissions `Kick Members` and `Ban Members`, or has a role that is defined in the `config#permissions#moderatorRoleIds` is considered a Moderator
+- 2 - Administrator - The Administrator permission level is the highest permission level that can be assigned through Discord. Anyone with the Discord permission `Administrator`, or has a role that is defined in the `config#permissions#administratorRoleIds` is considered an Administrator internally and will have access to dangerous/sensitive commands like `/broadcast`, `/dm-survivor`, and `/spawn-item`
 - 3 - Server Owner - This is the permission level of your Discord server owner, only 1 person can have this at any given time. Used to make sure server owners have a snowflake permission level internally 🙏 Doesn't currently have any exclusive commands, but you can choose to restrict commands to this permission level as needed
 - 4 - Developer - This is for members that develop on the bot, has access to dev utilities like `/eval` and `/exec`. This permission level can do almost everything, including evaluating arbitrary code on your host machine - use with caution!
 - 5 - Bot Owner - Bypasses every permission bit and level check, has access to every command and command.
 
-You can modify required permission levels to execute commands in the command files by setting the permLevel property. Let's take a look at an example:
+You can modify required permission levels to execute commands in the command files by setting the permLevel property. Let's take a look at an example `/src/commands/` file:
 
 ```javascript
 module.exports = new ChatInputCommand({

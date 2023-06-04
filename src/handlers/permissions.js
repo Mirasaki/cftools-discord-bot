@@ -108,13 +108,15 @@ const permConfig = [
     level: 1,
     hasLevel: (config, member, channel) => hasChannelPerms(
       member.id, channel, [ 'KickMembers', 'BanMembers' ]
-    ) === true
+    ) === true || config.permissions.moderatorRoleIds.some((e) => member._roles.includes(e))
   },
 
   {
     name: 'Administrator',
     level: 2,
-    hasLevel: (config, member, channel) => hasChannelPerms(member.id, channel, [ 'Administrator' ]) === true
+    hasLevel: (config, member, channel) => hasChannelPerms(
+      member.id, channel, [ 'Administrator' ]
+    ) === true || config.permissions.administratorRoleIds.some((e) => member._roles.includes(e))
   },
 
   {
