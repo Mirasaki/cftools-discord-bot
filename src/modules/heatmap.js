@@ -53,7 +53,10 @@ const zoneCoordinates = {
 let browser;
 const initBrowser = async () => {
   try {
-    browser = await puppeteer.launch({ headless: 'new' });
+    browser = await puppeteer.launch({
+      headless: 'new',
+      args: [ '--no-sandbox', '--disable-setuid-sandbox' ]
+    });
   }
   catch (err) {
     logger.syserr('Error encountered while launching headless puppeteer Chromium browser:');
