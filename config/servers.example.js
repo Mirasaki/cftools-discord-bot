@@ -13,6 +13,7 @@ module.exports = [
     // Command config
     STATISTICS_INCLUDE_ZONES_HEATMAP: true,
     STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN: true,
+    STATISTICS_HIDE_PLAYER_NAME_HISTORY: true,
     SERVER_INFO_INCLUDE_MOD_LIST: true,
 
     // Teleport config
