@@ -58,9 +58,8 @@ const playerStatisticsCtx = async (cfg, {
         description: stripIndents`
           Survivor has played for ${ msToHumanReadableTime(playtime * 1000) } - over ${ sessions } total sessions.
           Bringing them to an average of ${ playtimePerSessionStr } per session.
-  
-          **Name History:** **\`${ names.slice(0, 10).join('`**, **`') || 'None' }\`**
-  
+          ${ cfg.STATISTICS_HIDE_PLAYER_NAME_HISTORY !== true && `\n**Name History:** **\`${ names.slice(0, 10).join('`**, **`') || 'None' }\`**` }
+          
           **Favorite Weapon:** ${ cleanedWeaponName ?? 'Knife' } with ${ highestKills ?? 0 } kills
   
           **Deaths:** ${ deaths ?? 0 }

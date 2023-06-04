@@ -114,6 +114,9 @@ All server configuration is done in `config/servers.js`. Multiple servers are su
     // Keep the Puppeteer Chromium browser open - this generates the
     // heatmap WAY faster, but uses more RAM (~+20 MB)
     STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN: true,
+    // Played identities are considered sensitive information by default
+    // Set this to false if you want a player's in-game name history to be public
+    STATISTICS_HIDE_PLAYER_NAME_HISTORY: true,
     // Include mod list in /server-info
     SERVER_INFO_INCLUDE_MOD_LIST: true,
 
