@@ -86,7 +86,7 @@ module.exports = async (client, msg) => {
     let messageStr = '';
     if (CHAT_FEED_USE_DISCORD_PREFIX) messageStr += '(Discord)';
 
-    // Resolve tag
+    // Resolve tag & color
     let tag = null;
     if (
       CHAT_FEED_DISCORD_TAGS
@@ -98,6 +98,9 @@ module.exports = async (client, msg) => {
       if (firstTagMatch) tag = firstTagMatch;
     }
     if (tag) messageStr += `${ messageStr.length === 0 ? '' : ' ' }${ tag.displayTag }`;
+    
+    color_prefix='|>C'      // used by cf as indicator for prefix
+    if (tag.color === null ) messageStr =  color_prefix + tag.color + messageStr;  // if tag is not null prefix + color for config server.js + messageStr .. if null it will be ignored
 
     // Resolve display name
     let activeDisplayName = CHAT_FEED_USE_DISPLAY_NAME ? member.displayName : author.username;
@@ -112,7 +115,6 @@ module.exports = async (client, msg) => {
 
     // Append the actual message content, finally O;
     messageStr += `: ${ content }`;
-
     // Make sure we don't exceed max message length
     if (messageStr.length > 256) messageStr = messageStr.slice(0, 253) + '...';
 
