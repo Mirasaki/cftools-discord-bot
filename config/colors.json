@@ -3,6 +3,6 @@
   "invisible": "#36393f",
   "success": "#00b105",
   "error": "#d91d1d",
-  "chat_red":  "ed0e0e",
-  "chat_blue": "add8e6"
+  "chatRed":  "#ed0e0e",
+  "chatBlue": "#add8e6"
 }
