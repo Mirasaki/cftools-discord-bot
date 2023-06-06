@@ -30,19 +30,23 @@ module.exports = [
       {
         roleIds: [ clientConfig.permissions.ownerId ],
         displayTag: '[OWNER]'
+        color: []
       },
       {
         roleIds: clientConfig.permissions.administratorRoleIds,
         displayTag: '[ADMIN]'
+        color: []
       },
       {
         roleIds: clientConfig.permissions.moderatorRoleIds,
         displayTag: '[MOD]'
+        color: []
       },
       {
         // Matches everyone
         roleIds: [],
         displayTag: '[SURVIVOR]',
+        color: [clientConfig.color.chat_blue]  // it think this is not the prober way
         enabled: false
       }
     ],
