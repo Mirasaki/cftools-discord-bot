@@ -84,9 +84,19 @@ module.exports = async (client, msg) => {
 
     // Resolve message to send to DayZ
     let messageStr = '';
+
+    // Resolve color function
+    if (tag.color) {
+      const colorPrefix = '|>C'; // Used by CFTools as indicator for prefix
+      const cleanedColor = tag.color.replaceAll('#', '');
+      messageStr += `${ colorPrefix }${ cleanedColor }`;
+    }
+
+    // Resolve conditional Discord tag/prefix
+    // Note: Explicit no space after color declaration
     if (CHAT_FEED_USE_DISCORD_PREFIX) messageStr += '(Discord)';
 
-    // Resolve tag & color
+    // Resolve tag
     let tag = null;
     if (
       CHAT_FEED_DISCORD_TAGS
@@ -98,9 +108,6 @@ module.exports = async (client, msg) => {
       if (firstTagMatch) tag = firstTagMatch;
     }
     if (tag) messageStr += `${ messageStr.length === 0 ? '' : ' ' }${ tag.displayTag }`;
-    
-    color_prefix='|>C'      // used by cf as indicator for prefix
-    if (tag.color === null ) messageStr =  color_prefix + tag.color + messageStr;  // if tag is not null prefix + color for config server.js + messageStr .. if null it will be ignored
 
     // Resolve display name
     let activeDisplayName = CHAT_FEED_USE_DISPLAY_NAME ? member.displayName : author.username;

@@ -3,6 +3,7 @@
  */
 
 const { clientConfig } = require('../src/util');
+const colors = require('../config/colors.json');
 
 module.exports = [
   {
@@ -29,24 +30,23 @@ module.exports = [
     CHAT_FEED_DISCORD_TAGS: [
       {
         roleIds: [ clientConfig.permissions.ownerId ],
-        displayTag: '[OWNER]'
-        color: []
+        displayTag: '[OWNER]',
+        color: colors.chatRed
       },
       {
         roleIds: clientConfig.permissions.administratorRoleIds,
-        displayTag: '[ADMIN]'
-        color: []
+        displayTag: '[ADMIN]',
+        color: colors.chatRed
       },
       {
         roleIds: clientConfig.permissions.moderatorRoleIds,
-        displayTag: '[MOD]'
-        color: []
+        displayTag: '[MOD]',
+        color: colors.chatBlue
       },
       {
-        // Matches everyone
+        // Matches everyone - Doesn't use any color
         roleIds: [],
         displayTag: '[SURVIVOR]',
-        color: [clientConfig.color.chat_blue]  // it think this is not the prober way
         enabled: false
       }
     ],
