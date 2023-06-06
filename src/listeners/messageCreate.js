@@ -84,18 +84,7 @@ module.exports = async (client, msg) => {
 
     // Resolve message to send to DayZ
     let messageStr = '';
-
-    // Resolve color function
-    if (tag.color) {
-      const colorPrefix = '|>C'; // Used by CFTools as indicator for prefix
-      const cleanedColor = tag.color.replaceAll('#', '');
-      messageStr += `${ colorPrefix }${ cleanedColor }`;
-    }
-
-    // Resolve conditional Discord tag/prefix
-    // Note: Explicit no space after color declaration
-    if (CHAT_FEED_USE_DISCORD_PREFIX) messageStr += '(Discord)';
-
+    
     // Resolve tag
     let tag = null;
     if (
@@ -107,8 +96,19 @@ module.exports = async (client, msg) => {
       const firstTagMatch = workingTags.find((e) => e.roleIds.some((roleId) => member._roles.includes(roleId)));
       if (firstTagMatch) tag = firstTagMatch;
     }
-    if (tag) messageStr += `${ messageStr.length === 0 ? '' : ' ' }${ tag.displayTag }`;
+    //Resolve tag color
+    if (tag.color){                                                          // moved tag.color to here cause it cant get accessed if it is not initalized    
+    const colorPrefix = '|>C'; // Used by CFTools as indicator for prefix
+    const cleanedColor = tag.color.replaceAll('#', '');
+    messageStr += `${ colorPrefix }${ cleanedColor }`;
+    }
 
+    // Resolve conditional Discord tag/prefix
+    // Note: Explicit no space after color declaration
+    if (CHAT_FEED_USE_DISCORD_PREFIX) messageStr += '(Discord)' // needed to move this here cause it will get yetted by tag.color
+
+    if (tag) messageStr += `${ messageStr.length === 0 ? '' : ' ' }${ tag.displayTag }`;
+    
     // Resolve display name
     let activeDisplayName = CHAT_FEED_USE_DISPLAY_NAME ? member.displayName : author.username;
     if (
@@ -119,12 +119,13 @@ module.exports = async (client, msg) => {
       CHAT_FEED_MAX_DISPLAY_NAME_LENGTH
     ) + '...';
     messageStr += `${ messageStr.length === 0 ? '' : ' ' }${ activeDisplayName }`;
-
+    
     // Append the actual message content, finally O;
     messageStr += `: ${ content }`;
+    
     // Make sure we don't exceed max message length
     if (messageStr.length > 256) messageStr = messageStr.slice(0, 253) + '...';
-
+    
     // Sending message to server
     const res = await broadcastMessage(CFTOOLS_SERVER_API_ID, messageStr);
     if (res !== true) debugLog(`[Live Chat Feed - ${ NAME }] Invalid response code - message might not have broadcasted: "${ messageStr }"`);
