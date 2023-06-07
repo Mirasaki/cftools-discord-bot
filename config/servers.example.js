@@ -31,17 +31,17 @@ module.exports = [
       {
         roleIds: [ clientConfig.permissions.ownerId ],
         displayTag: '[OWNER]',
-        color: colors.chatRed
+        color: colors.red
       },
       {
         roleIds: clientConfig.permissions.administratorRoleIds,
         displayTag: '[ADMIN]',
-        color: colors.chatRed
+        color: colors.red
       },
       {
         roleIds: clientConfig.permissions.moderatorRoleIds,
         displayTag: '[MOD]',
-        color: colors.chatBlue
+        color: colors.blue
       },
       {
         // Matches everyone - Doesn't use any color
