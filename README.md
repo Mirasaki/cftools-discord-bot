@@ -285,7 +285,7 @@ To add a second, or more, servers - copy-paste your entire server block and modi
 ```
 
 <br/>
-<h2 id="installation-and-usage">🛠️ Installation & Usage</h2>
+<h2 id="installation-and-usage">🔨 Installation & Usage</h2>
 
 ### Prerequisites
 
