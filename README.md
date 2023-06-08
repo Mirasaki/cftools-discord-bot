@@ -14,7 +14,7 @@
 
 </div>
 
-<p align="center"><a href="/assets/showcase/thumbnail.gif"><img src="assets/showcase/thumbnail.gif" width="100%" style="border-radius:25px;box-shadow:black 2px 2px 25px;max-width:500px"/></a>
+<p align="center"><a href="/assets/showcase/thumbnail.gif"><img src="assets/showcase/thumbnail.gif" width="75%" style="border-radius:25px;box-shadow:black 2px 2px 25px;width:min(500px, 100%)"/></a>
 
 <!-- <a><img src="http://randojs.com/images/dropShadow.png" width="100%"/></a></p> -->
 <br/>
