@@ -91,6 +91,8 @@ Any command can be used without any Discord permissions, as long as the bot is i
 
 `AUTOMATIC_LEADERBOARD_MODULE`: This requires the following permissions in any channel this module is assigned to: `View Channel`, `Read Message History`, `Send Messages`, and `Embed Links`
 
+`DISCORD_TO_DAYZ_LIVE_CHAT_RELAY`: This module requires the privileged Discord "Message Content Intent" (Your App > Bot > Enable `Message Content Intent`). This module also required the following permissions in the channel where Discord messages are relayed from: `View Channel` and `Read Message History`
+
 ## Client Permissions
 
 These are permission levels that are used internally by the bot to determine the permission level of any given user and determine which commands they can use. Available permissions levels are:
@@ -293,8 +295,8 @@ The quickest and easiest way to host/use this bot is by deploying it inside of a
 4. Rename `/config/config.example.js` to `config.js` and provide your bot configuration
 5. Rename `/config/servers.example.js` to `servers.js` and provide your server configuration
     - Alternatively, you can now use the `docker-compose up` command to finish setting up the project if you have the [Docker Compose CLI](https://docs.docker.com/compose/) installed
-6. Build the project: `docker build --tag my-discord-bot .`
-7. Start the bot: `docker run -it --env-file .env --name my-discord-bot mirasaki/cftools-discord-bot:main`
+6. Build the project: `docker build --tag my-cftools-discord-bot .`
+7. Start the bot: `docker run -it --env-file .env --name my-cftools-discord-bot`
 
 ### Run as a plain NodeJS app
 
