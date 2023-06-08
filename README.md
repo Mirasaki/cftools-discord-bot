@@ -91,6 +91,8 @@ Any command can be used without any Discord permissions, as long as the bot is i
 
 `AUTOMATIC_LEADERBOARD_MODULE`: This requires the following permissions in any channel this module is assigned to: `View Channel`, `Read Message History`, `Send Messages`, and `Embed Links`
 
+`DISCORD_TO_DAYZ_LIVE_CHAT_RELAY`: This module requires the privileged Discord "Message Content Intent" (Your App > Bot > Enable `Message Content Intent`). This module also required the following permissions in the channel where Discord messages are relayed from: `View Channel` and `Read Message History`
+
 ## Client Permissions
 
 These are permission levels that are used internally by the bot to determine the permission level of any given user and determine which commands they can use. Available permissions levels are:
