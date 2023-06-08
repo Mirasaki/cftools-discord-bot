@@ -20,7 +20,7 @@
 <br />
 <h2 align="center">⭐ It's free, open-source, and self-host - meaning you're in full control</h2>
 <p align="center">
-  This project was created and open-sourced by [Mirasaki Development](https://mirasaki.dev). That means it's publicly available for anyone to grab and do whatever with (MIT licensed). This project will never be monetized, every feature will always be free (keep in mind CFTools has premium endpoints). All I need to keep adding new functionality and modules is some GitHub stars. Join the absolute <strong>legends</strong> below by clicking that Star button in the top-right of your screen, it doesn't cost you anything <strong>and</strong> means the world to us ❤️
+  This project was created and open-sourced by <a href="https://mirasaki.dev" target="_blank">Mirasaki Development</a>. That means it's publicly available for anyone to grab and do whatever with (MIT licensed). This project will never be monetized, every feature will always be free (keep in mind CFTools has premium endpoints). All I need to keep adding new functionality and modules is some GitHub stars. Join the absolute <strong>legends</strong> below by clicking that Star button in the top-right of your screen, it doesn't cost you anything <strong>and</strong> means the world to us ❤️
 </p>
 <div align='center'>
 
