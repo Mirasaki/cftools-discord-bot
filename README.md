@@ -2,7 +2,7 @@
 <h1 align="center">CFTools Discord Bot</h1>
 <p align="center">A Discord bot that fully utilizes the CFTools Data API.</p>
 
-<div style="display:flex;justify-content:center;align-items:center;text-align:center;margin-bottom:10px">
+<div align='center'>
 
   [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
   ![build](https://img.shields.io/github/actions/workflow/status/mirasaki/cftools-discord-bot/test.yml)
@@ -14,7 +14,7 @@
 
 </div>
 
-<p align="center"><a href="/assets/showcase/thumbnail.gif"><img src="assets/showcase/thumbnail.gif" width="100%" style="border-radius:25px;box-shadow:black 2px 2px 25px"/></a>
+<p align="center"><a href="/assets/showcase/thumbnail.gif"><img src="assets/showcase/thumbnail.gif" width="100%" style="border-radius:25px;box-shadow:black 2px 2px 25px;max-width:500px"/></a>
 
 <!-- <a><img src="http://randojs.com/images/dropShadow.png" width="100%"/></a></p> -->
 <br/>
@@ -27,7 +27,6 @@ This project was created and open-sourced by [Mirasaki Development](https://mira
 [![Stargazers repo roster for @Mirasaki/cftools-discord-bot](https://reporoster.com/stars/Mirasaki/cftools-discord-bot)](https://github.com/Mirasaki/cftools-discord-bot/stargazers)
 <br/>
 <br/>
-
 
 ## 📜 Table of Contents
 
