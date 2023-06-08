@@ -1,16 +1,35 @@
-# cftools-discord-bot
+<p align="center"><img src="assets/logo.png" alt="CFTools Bot Logo" height="60" style="border-radius:50px"/></p>
+<h1 align="center">CFTools Discord Bot</h1>
+<p align="center">A Discord bot that fully utilizes the CFTools Data API.</p>
 
-[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
-![build](https://img.shields.io/github/actions/workflow/status/mirasaki/cftools-discord-bot/test.yml)
-[![CodeFactor](https://www.codefactor.io/repository/github/Mirasaki/cftools-discord-bot/badge)](https://www.codefactor.io/repository/github/Mirasaki/cftools-discord-bot)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Docker Pulls](https://img.shields.io/docker/pulls/mirasaki/cftools-discord-bot)
-![version](https://img.shields.io/github/v/release/Mirasaki/cftools-discord-bot)
-<!-- ![size](https://img.shields.io/docker/image-size/mirasaki/cftools-discord-bot) -->
+<div style="display:flex;justify-content:center;align-items:center;text-align:center;margin-bottom:10px">
 
-This is a Discord bot that fully utilizes the CFTools Data API.
+  [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+  ![build](https://img.shields.io/github/actions/workflow/status/mirasaki/cftools-discord-bot/test.yml)
+  [![CodeFactor](https://www.codefactor.io/repository/github/Mirasaki/cftools-discord-bot/badge)](https://www.codefactor.io/repository/github/Mirasaki/cftools-discord-bot)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  ![Docker Pulls](https://img.shields.io/docker/pulls/mirasaki/cftools-discord-bot)
+  ![version](https://img.shields.io/github/v/release/Mirasaki/cftools-discord-bot)
+  <!-- ![size](https://img.shields.io/docker/image-size/mirasaki/cftools-discord-bot) -->
 
-## Table of Contents
+</div>
+
+<p align="center"><a href="/assets/showcase/thumbnail.gif"><img src="assets/showcase/thumbnail.gif" width="100%" style="border-radius:25px;box-shadow:black 2px 2px 25px"/></a>
+
+<!-- <a><img src="http://randojs.com/images/dropShadow.png" width="100%"/></a></p> -->
+<br/>
+
+## ⭐ It's free, open-source, and self-host - meaning you're in full control
+
+This project was created and open-sourced by [Mirasaki Development](https://mirasaki.dev). That means it's publicly available for anyone to grab and do whatever with (MIT licensed). This project will never be monetized, every feature will always be free (keep in mind CFTools has premium endpoints). All I need to keep adding new functionality and modules is some GitHub stars. Join the absolute **legends** below by clicking that Star button in the top-right of your screen, it doesn't cost you anything **and** means the world to us ❤️
+<br/>
+
+[![Stargazers repo roster for @Mirasaki/cftools-discord-bot](https://reporoster.com/stars/Mirasaki/cftools-discord-bot)](https://github.com/Mirasaki/cftools-discord-bot/stargazers)
+<br/>
+<br/>
+
+
+## 📜 Table of Contents
 
 - [Showcase](#showcase)
 - [Features](#features)
@@ -19,14 +38,15 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 - [Discord Permissions](#discord-permissions)
 - [Client Permissions](#client-permissions)
 - [Server Configuration](#server-configuration)
-- [Installation & Usage](#installation--usage)
+- [Installation & Usage](#installation-and-usage)
   - [Prerequisites](#prerequisites)
   - [Docker](#run-as-a-docker-container-preferred)
   - [Node](#run-as-a-plain-nodejs-app)
 
 ---
 
-## Showcase
+<br/>
+<h2 id="showcase">🎥 Showcase</h2>
 
 <details>
 <summary>Click to view</summary>
@@ -40,7 +60,8 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 
 </details>
 
-## Features
+<br/>
+<h2 id="features">🤩 Features</h2>
 
 - Discord > DayZ live chat feed - comes with a tag system and is **very** customizable
 - Player Lists
@@ -66,7 +87,8 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 - Server info overview
 - And best of all, everything is configurable!
 
-## Planned Features
+<br />
+<h2 id="planned-features">💡 Planned Features</h2>
 
 - Execute raw RCon commands - I'm looking for someone that is very knowledgeable on available RCon command
 - Dedicated Server Status channel, overview with online/offline status
@@ -75,11 +97,13 @@ This is a Discord bot that fully utilizes the CFTools Data API.
 - Manage Whitelists
 - Custom GameLab action support
 
-## Hosting
+<br/>
+<h2 id="hosting">🖥️ Hosting</h2>
 
 We have partnered with [VYKIX.com](https://portal.vykix.com/aff.php?aff=17) after observing many of our clients using VYKIX services and products. Check them out for affordable and reliable hosting, they bring the **best DayZ hosting experience possible.** 📈
 
-## Discord Permissions
+<br/>
+<h2 id="discord-permissions">🟣 Discord Permissions</h2>
 
 > This is not the permission level required to execute actions or run commands, like User, Moderator or Administrator
 
@@ -93,7 +117,8 @@ Any command can be used without any Discord permissions, as long as the bot is i
 
 `DISCORD_TO_DAYZ_LIVE_CHAT_RELAY`: This module requires the privileged Discord "Message Content Intent" (Your App > Bot > Enable `Message Content Intent`). This module also required the following permissions in the channel where Discord messages are relayed from: `View Channel` and `Read Message History`
 
-## Client Permissions
+<br/>
+<h2 id="client-permissions">🟢 Client Permissions</h2>
 
 These are permission levels that are used internally by the bot to determine the permission level of any given user and determine which commands they can use. Available permissions levels are:
 
@@ -121,7 +146,8 @@ module.exports = new ChatInputCommand({
 });
 ```
 
-## Server Configuration
+<br/>
+<h2 id="server-configuration">🛠️ Server Configuration</h2>
 
 All server configuration is done in `config/servers.js`. Multiple servers are supported. The server configuration file is created during the installation and usage steps. Below is detailed information on what the settings do.
 
@@ -260,7 +286,8 @@ To add a second, or more, servers - copy-paste your entire server block and modi
 ]
 ```
 
-## Installation & Usage
+<br/>
+<h2 id="installation-and-usage">🛠️ Installation & Usage</h2>
 
 ### Prerequisites
 
@@ -316,3 +343,6 @@ You can also clone this repository or download a release, and host the project d
     - `npm run start:dev` if you have `nodemon` installed for automatic restarts on changes, suitable for development environments
 
 > Open source, self-hosted, and MIT licensed, meaning you're in full control.
+
+<br/>  
+<p align="center"><a href="https://github.com/Mirasaki/cftools-discord-bot#cftools-discord-bot"><img src="http://randojs.com/images/backToTopButton.png" alt="Back to top" height="29"/></a></p>
