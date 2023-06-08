@@ -16,16 +16,17 @@
 
 <p align="center"><a href="/assets/showcase/thumbnail.gif"><img src="assets/showcase/thumbnail.gif" width="75%" style="border-radius:25px;box-shadow:black 2px 2px 25px;width:min(500px, 100%)"/></a>
 
-<!-- <a><img src="http://randojs.com/images/dropShadow.png" width="100%"/></a></p> -->
-<br/>
-
-## ⭐ It's free, open-source, and self-host - meaning you're in full control
-
-This project was created and open-sourced by [Mirasaki Development](https://mirasaki.dev). That means it's publicly available for anyone to grab and do whatever with (MIT licensed). This project will never be monetized, every feature will always be free (keep in mind CFTools has premium endpoints). All I need to keep adding new functionality and modules is some GitHub stars. Join the absolute **legends** below by clicking that Star button in the top-right of your screen, it doesn't cost you anything **and** means the world to us ❤️
-<br/>
+<br />
+<h2 align="center">⭐ It's free, open-source, and self-host - meaning you're in full control</h2>
+<p align="center">
+  This project was created and open-sourced by [Mirasaki Development](https://mirasaki.dev). That means it's publicly available for anyone to grab and do whatever with (MIT licensed). This project will never be monetized, every feature will always be free (keep in mind CFTools has premium endpoints). All I need to keep adding new functionality and modules is some GitHub stars. Join the absolute **legends** below by clicking that Star button in the top-right of your screen, it doesn't cost you anything **and** means the world to us ❤️
+</p>
+<div align='center'>
 
 [![Stargazers repo roster for @Mirasaki/cftools-discord-bot](https://reporoster.com/stars/Mirasaki/cftools-discord-bot)](https://github.com/Mirasaki/cftools-discord-bot/stargazers)
-<br/>
+
+</div>
+
 <br/>
 
 ## 📜 Table of Contents
@@ -41,8 +42,6 @@ This project was created and open-sourced by [Mirasaki Development](https://mira
   - [Prerequisites](#prerequisites)
   - [Docker](#run-as-a-docker-container-preferred)
   - [Node](#run-as-a-plain-nodejs-app)
-
----
 
 <br/>
 <h2 id="showcase">🎥 Showcase</h2>
