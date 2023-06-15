@@ -36,9 +36,9 @@ jobs:
       # initialize environmental/config files
       - name: Initialize config
         run: |
-          cp config/.env.example config/.env \
-            config/config.example.js config/config.js \
-            config/servers.example.js config/servers.js
+          cp config/.env.example config/.env
+          cp config/config.example.js config/config.js
+          cp config/servers.example.js config/servers.js
 
       # personalize repo & project meta for user
       - name: Personalize repository/project meta
