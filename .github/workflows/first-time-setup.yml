@@ -25,8 +25,7 @@ jobs:
       # remove files not needed for user instance of template
       - name: Remove unneeded files
         run: |
-          rm -rf README.md \
-            .github/FUNDING.yml \
+          rm -rf .github/FUNDING.yml \
             .github/workflows/deploy.yml \
             .github/workflows/docker-image.yml \
             .github/workflows/publish.yml \
