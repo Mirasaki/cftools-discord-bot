@@ -26,7 +26,6 @@ jobs:
       - name: Remove unneeded files
         run: |
           rm -f README.md
-          .github/FUNDING.yml
           .github/workflows/deploy.yml
           .github/workflows/docker-image.yml
           .github/workflows/publish.yml
