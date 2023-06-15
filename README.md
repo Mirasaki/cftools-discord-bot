@@ -337,7 +337,7 @@ You can also clone this repository or download a release, and host the project d
 7. Rename [`/config/config.example.js`](/config/config.example.js "View config.example.js file in current repository") to `config.js` and go through your bot configuration
 8. Rename [`/config/servers.example.js`](/config/servers.example.js "View servers.example.js file in current repository") to `servers.js` and go through your server configuration
 9. Use the command `node .` to start the application, or alternatively:
-    - `npm run start` to keep the process alive with [PM2](https://pm2.io/ "PM2 | Official Website"), suitable for production environments. (`npm i -g pm2` to install)
+    - `npm run pm2:start` to keep the process alive with [PM2](https://pm2.io/ "PM2 | Official Website"), suitable for production environments. (`npm i -g pm2` to install)
     - `npm run start:dev` if you have `nodemon` installed for automatic restarts on changes, suitable for development environments
 
 > Open source, self-hosted, and MIT licensed, meaning you're in full control.

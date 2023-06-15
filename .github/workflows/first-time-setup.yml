@@ -1,0 +1,60 @@
+name: first-time-setup
+run-name: Initialize repo from template
+
+on:
+  # run when branch created (repo generated from template)
+  create:
+
+# only keep latest run of this workflow
+concurrency:
+  group: first-time-setup
+  cancel-in-progress: true
+
+jobs:
+  first-time-setup:
+    # ensure run only once, when repo generated
+    if: github.run_number == 1
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # get main branch repo contents
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # remove files not needed for user instance of template
+      - name: Remove unneeded files
+        run: |
+          rm -rf README.md
+          .github/FUNDING.yml
+          .github/workflows/deploy.yml
+          .github/workflows/docker-image.yml
+          .github/workflows/publish.yml
+          assets/showcase
+          assets/logo.png
+          tutorials
+          CHANGELOG.md
+
+      # initialize environmental/config files
+      - name: Initialize config
+        run: |
+          cp config/.env.example config/.env
+          config/config.example.js config/config.js
+          config/servers.example.js config/servers.js
+
+      # personalize repo & project meta for user
+      - name: Personalize repository/project meta
+        run: |
+          sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository }}/g' README.md
+          sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository }}/g' package.json
+          sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository }}/g' package-lock.json
+
+          sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' README.md
+          sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' package.json
+          sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' package-lock.json
+
+      # save changed files
+      - name: Commit changed files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: setup repo from template"
