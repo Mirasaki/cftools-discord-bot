@@ -25,33 +25,30 @@ jobs:
       # remove files not needed for user instance of template
       - name: Remove unneeded files
         run: |
-          sudo rm -rf ./README.md
-          ./.github/FUNDING.yml
-          ./.github/workflows/deploy.yml
-          ./.github/workflows/docker-image.yml
-          ./.github/workflows/publish.yml
-          ./assets/showcase
-          ./assets/logo.png
-          ./tutorials
-          ./CHANGELOG.md
+          rm -f README.md
+          .github/FUNDING.yml
+          .github/workflows/deploy.yml
+          .github/workflows/docker-image.yml
+          .github/workflows/publish.yml
+          CHANGELOG.md
 
       # initialize environmental/config files
       - name: Initialize config
         run: |
-          cp ./config/.env.example ./config/.env
-          ./config/config.example.js ./config/config.js
-          ./config/servers.example.js ./config/servers.js
+          cp config/.env.example config/.env
+          config/config.example.js config/config.js
+          config/servers.example.js config/servers.js
 
       # personalize repo & project meta for user
       - name: Personalize repository/project meta
         run: |
-          sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository }}/g' ./README.md
-          sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository }}/g' ./package.json
-          sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository }}/g' ./package-lock.json
+          sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository }}/g' README.md
+          sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository }}/g' package.json
+          sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository }}/g' package-lock.json
 
-          sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' ./README.md
-          sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' ./package.json
-          sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' ./package-lock.json
+          sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' README.md
+          sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' package.json
+          sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' package-lock.json
 
       # save changed files
       - name: Commit changed files
