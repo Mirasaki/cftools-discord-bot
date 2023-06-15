@@ -10,15 +10,17 @@ concurrency:
   group: first-time-setup
   cancel-in-progress: true
 
-permissions:
-  contents: write
-
 jobs:
   first-time-setup:
     # ensure run only once, when repo generated
     if: github.run_number == 1
 
     runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
 
     steps:
       # get main branch repo contents
