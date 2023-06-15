@@ -1,5 +1,5 @@
 name: first-time-setup
-run-name: first time setup of repo
+run-name: Initialize repo from template
 
 on:
   # run when branch created (repo generated from template)
