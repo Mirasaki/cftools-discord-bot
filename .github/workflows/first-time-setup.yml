@@ -10,6 +10,9 @@ concurrency:
   group: first-time-setup
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   first-time-setup:
     # ensure run only once, when repo generated
@@ -42,9 +45,13 @@ jobs:
       # personalize repo & project meta for user
       - name: Personalize repository/project meta
         run: |
+          sed -i "/\bCodeFactor\b/d" README.md
+          sed -i "/\bDocker Pulls\b/d" README.md
+
           sed -i 's/Mirasaki\/cftools-discord-bot/${{ github.repository_owner }}\/${{ github.event.repository.name }}/g' README.md \
             package.json \
             package-lock.json
+
           sed -i 's/cftools-discord-bot/${{ github.event.repository.name }}/g' README.md \
             package.json \
             package-lock.json
