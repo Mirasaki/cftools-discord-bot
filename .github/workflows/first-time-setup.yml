@@ -26,9 +26,6 @@ jobs:
       - name: Remove unneeded files
         run: |
           rm -f README.md
-          .github/workflows/deploy.yml
-          .github/workflows/docker-image.yml
-          .github/workflows/publish.yml
           CHANGELOG.md
 
       # initialize environmental/config files
