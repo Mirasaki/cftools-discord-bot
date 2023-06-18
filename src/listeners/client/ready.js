@@ -8,8 +8,6 @@ module.exports = (client) => {
 
   logger.success(`Client logged in as ${
     chalk.cyanBright(client.user.username)
-  }${
-    chalk.grey(`#${ client.user.discriminator }`)
   } after ${ upTimeStr }`);
 
   // Calculating the membercount
