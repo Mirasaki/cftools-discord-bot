@@ -38,21 +38,21 @@
     "cftools-sdk": "^2.1.1",
     "common-tags": "^1.8.2",
     "discord.js": "^14.11.0",
-    "dotenv": "^16.1.4",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "heatmap.js": "^2.0.5",
-    "puppeteer": "^20.6.0"
+    "puppeteer": "^20.7.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^10.0.1",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^9.0.3",
-    "@semantic-release/npm": "^10.0.3",
-    "@semantic-release/release-notes-generator": "^11.0.2",
+    "@semantic-release/npm": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^11.0.3",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.42.0",
+    "eslint": "^8.43.0",
     "eslint-plugin-sonarjs": "^0.19.0",
     "nodemon": "^2.0.22",
     "semantic-release": "^21.0.5"

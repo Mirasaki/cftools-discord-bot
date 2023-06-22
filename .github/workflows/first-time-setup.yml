@@ -34,6 +34,8 @@ jobs:
             .github/workflows/deploy.yml \
             .github/workflows/docker-image.yml \
             .github/workflows/publish.yml \
+            .github/workflows/codeql.yml \
+            .github/workflows/first-time-setup.yml \
             tutorials \
             CHANGELOG.md
 

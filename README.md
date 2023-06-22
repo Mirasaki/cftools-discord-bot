@@ -267,7 +267,7 @@ All server configuration is done in `config/servers.js`. Multiple servers are su
     AUTO_LB_PLAYER_LIMIT: 100,
     // The stat to rank players by in auto leaderboard module
     // One of LEADERBOARD_STATS
-    AUTO_LB_STAT: 'SUICIDES'
+    AUTO_LB_STAT: 'OVERALL'
   }
 ```
 
