@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon run node --trace-warnings .",
-    "test": "node . mode=test",
+    "test": "node . mode=testing",
     "commit": "cz",
     "docker:build": "docker build --tag cftools-discord-bot .",
     "docker:shell": "docker run -it --rm cftools-discord-bot sh",

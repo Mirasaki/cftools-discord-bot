@@ -250,7 +250,7 @@ logger.success(`Finished initializing after ${ getRuntime(initTimerStart).ms } m
 if (USE_API === 'true') require('./server/');
 
 // Exit before initializing listeners in test mode
-if (modeArg && modeArg.endsWith('test')) process.exit(1);
+if (modeArg && modeArg.endsWith('testing')) process.exit(1);
 
 // Logging in to our client
 client.login(DISCORD_BOT_TOKEN);

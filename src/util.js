@@ -11,9 +11,7 @@
 
 // Importing from libraries
 const { OAuth2Scopes, PermissionFlagsBits } = require('discord.js');
-const {
-  readdirSync, statSync, existsSync
-} = require('fs');
+const { readdirSync, statSync } = require('fs');
 const moment = require('moment');
 const path = require('path');
 const logger = require('@mirasaki/logger');
@@ -33,14 +31,33 @@ const {
 } = require('./constants');
 const { validPermValues } = require('./handlers/permissions');
 
-// Resolve client configuration
-const modeArg = process.argv.find((arg) => arg.startsWith('mode='));
-const configFilePath = modeArg && modeArg.endsWith('test') ? '../config/config.example.js' : '../config/config.js';
-if (!existsSync(configFilePath.replace(/\.\.\//g, ''))) {
-  logger.syserr(`Configuration file at "${ configFilePath.replace(/\.\.\//g, '') }" doesn't exists, please refer to documentation, exiting...`);
+const exitNoConfig = () => {
+  logger.syserr('Configuration file at "/config/config.js" doesn\'t exists, please refer to documentation, exiting...');
   process.exit(0);
+};
+
+// Resolve client configuration
+let clientConfig;
+try {
+  clientConfig = require('../config/config.js');
 }
-const clientConfig = require(configFilePath);
+catch {
+  try {
+    const modeArg = process.argv.find((e) => e.startsWith('mode'));
+    const modeArgVal = modeArg.split('=')[1] ?? null;
+    if (modeArgVal === 'testing') {
+      clientConfig = require('../config/config.example.js');
+      logger.debug('Using EXAMPLE CONFIG file, this is only supposed to happen in automated tests - please create a "/config/config.js" file and restart the bot');
+    }
+    else exitNoConfig();
+  }
+  catch {
+    exitNoConfig();
+  }
+}
+
+// Require config fail safe
+if (!clientConfig) exitNoConfig();
 
 /**
  * Transforms hex and rgb color input into integer color code
