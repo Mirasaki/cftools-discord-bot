@@ -106,17 +106,17 @@ const permConfig = [
   {
     name: 'Moderator',
     level: 1,
-    hasLevel: (config, member, channel) => hasChannelPerms(
+    hasLevel: (config, member, channel) => channel && (hasChannelPerms(
       member.id, channel, [ 'KickMembers', 'BanMembers' ]
-    ) === true || config.permissions.moderatorRoleIds.some((e) => member._roles.includes(e))
+    ) === true || config.permissions.moderatorRoleIds.some((e) => member._roles.includes(e)))
   },
 
   {
     name: 'Administrator',
     level: 2,
-    hasLevel: (config, member, channel) => hasChannelPerms(
+    hasLevel: (config, member, channel) => channel && (hasChannelPerms(
       member.id, channel, [ 'Administrator' ]
-    ) === true || config.permissions.administratorRoleIds.some((e) => member._roles.includes(e))
+    ) === true || config.permissions.administratorRoleIds.some((e) => member._roles.includes(e)))
   },
 
   {
@@ -126,7 +126,7 @@ const permConfig = [
       // Shorthand
       // hasLevel: (config, member, channel) => (channel.guild?.ownerId === member.user?.id)
       // COULD result in (undefined === undefined)
-      if (channel.guild && channel.guild.ownerId) {
+      if (channel && channel.guild && channel.guild.ownerId) {
         return (channel.guild.ownerId === member.id);
       }
       return false;
