@@ -43,7 +43,6 @@
 
 </details>
 
-<br/>
 <h2 id="features">🤩 Features</h2>
 
 - Discord > DayZ live chat feed - comes with a tag system and is **very** customizable
