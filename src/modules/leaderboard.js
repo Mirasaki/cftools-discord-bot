@@ -59,10 +59,10 @@ const buildLeaderboardEmbedMessages = (guild, res, isDefaultQuery, statToGet, pl
       return {
         name: `${ emojiMap[index + 1] || noEmojiFallback } ${ e.name }`,
         value: stripIndents`
-            Kills: **${ e.kills }**
-            Deaths: **${ e.deaths }**
-            KD: **${ e.killDeathRation }**
-            LK: **${ e.longestKill }m**
+            Kills: **${ e.kills ?? 0 }**
+            Deaths: **${ e.deaths ?? 0 }**
+            KD: **${ e.killDeathRation ?? '1.00' }**
+            LK: **${ e.longestKill ?? '-' }m**
           `,
         inline: true
       };
