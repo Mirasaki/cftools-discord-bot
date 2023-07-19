@@ -8,6 +8,8 @@ const heatmapHeight = 900;
 const backgroundImage = './assets/images/body.png';
 const backgroundImageDataUrl = `data:image/jpeg;base64,${ readFileSync(backgroundImage).toString('base64') }`;
 
+const { PATH_TO_CHROME_EXECUTABLE } = process.env;
+
 // Define the coordinates for each hit zone
 const zoneCoordinates = {
   brain: {
@@ -52,11 +54,13 @@ const zoneCoordinates = {
 // Use reference for increased speed, avoiding start up/#launch
 let browser;
 const initBrowser = async () => {
+  const cfg = {
+    headless: 'new',
+    args: [ '--no-sandbox', '--disable-setuid-sandbox' ]
+  };
+  if (PATH_TO_CHROME_EXECUTABLE) cfg.executablePath = PATH_TO_CHROME_EXECUTABLE;
   try {
-    browser = await puppeteer.launch({
-      headless: 'new',
-      args: [ '--no-sandbox', '--disable-setuid-sandbox' ]
-    });
+    browser = await puppeteer.launch(cfg);
   }
   catch (err) {
     logger.syserr('Error encountered while launching headless puppeteer Chromium browser:');
