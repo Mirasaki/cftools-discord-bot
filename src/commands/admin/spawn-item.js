@@ -33,6 +33,18 @@ module.exports = new ChatInputCommand({
         required: false,
         min_value: 0.0000,
         max_value: 1000
+      },
+      {
+        name: 'stacked',
+        description: 'Spawn items as a stack (only works if item supports to be stacked), default is false',
+        type: ApplicationCommandOptionType.Boolean,
+        required: false
+      },
+      {
+        name: 'debug',
+        description: 'Use debug spawn method to automatically populate specific items',
+        type: ApplicationCommandOptionType.Boolean,
+        required: false
       }
     ]
   },
@@ -43,6 +55,8 @@ module.exports = new ChatInputCommand({
     const serverCfg = getServerConfigCommandOptionValue(interaction);
     const itemClass = options.getString('item-class');
     const quantity = options.getNumber('quantity') ?? 1;
+    const stacked = options.getBoolean('stacked') ?? false;
+    const debug = options.getBoolean('debug') ?? false;
 
     // Deferring our reply
     await interaction.deferReply();
@@ -60,7 +74,9 @@ module.exports = new ChatInputCommand({
         serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
         session,
         itemClass,
-        quantity
+        quantity,
+        stacked,
+        debug
       });
     }
     catch (err) {
