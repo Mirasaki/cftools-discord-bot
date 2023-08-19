@@ -47,6 +47,7 @@
 
 - Discord > DayZ live chat feed - comes with a tag system and is **very** customizable
 - Watch List - Receive role-ping notifications when a player in a custom managed list logs in
+- Delayed Killfeed - Delay kill webhook messages (configurable) before forwarding them to a different/public channel
 - Player Lists
 
   - Public list
