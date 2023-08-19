@@ -1,5 +1,6 @@
 const { MS_IN_ONE_SECOND } = require('../constants');
 const { serverConfig, broadcastMessage } = require('../modules/cftClient');
+const { checkIsWatchListMsg } = require('../modules/watch-list');
 const { debugLog } = require('../util');
 
 const chatFeedThrottleCache = new Map();
@@ -22,6 +23,9 @@ module.exports = async (client, msg) => {
   // or for messages that don't have textContent but only embeds/files/components,
   // the latter of which is ignored by the #bot check
   if (!content || content.length === 0) return;
+
+  // Run watch list checks
+  checkIsWatchListMsg(msg, client);
 
   // Member property isn't available, which is required
   // This can happen in partial API outages
