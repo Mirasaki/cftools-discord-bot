@@ -1,5 +1,6 @@
 const { MS_IN_ONE_SECOND } = require('../constants');
 const { serverConfig, broadcastMessage } = require('../modules/cftClient');
+const { checkIsDelayedKillFeedMsg } = require('../modules/delayed-kill-feed');
 const { checkIsWatchListMsg } = require('../modules/watch-list');
 const { debugLog } = require('../util');
 
@@ -25,7 +26,10 @@ module.exports = async (client, msg) => {
   if (!content || content.length === 0) return;
 
   // Run watch list checks
-  checkIsWatchListMsg(msg, client);
+  checkIsWatchListMsg(msg);
+
+  // Run delayed kill feed checks
+  checkIsDelayedKillFeedMsg(msg);
 
   // Member property isn't available, which is required
   // This can happen in partial API outages

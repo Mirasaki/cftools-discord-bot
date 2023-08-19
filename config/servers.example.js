@@ -1,10 +1,10 @@
-/**
- * SEE the README.md file for explanation and details
- */
-
 const { clientConfig } = require('../src/util');
 const colors = require('../config/colors.json');
 
+/**
+ * For more information:
+ * {@link https://wiki.mirasaki.dev/docs/cftools-discord-bot/server-configuration}
+ */
 module.exports = [
   {
     // Server data
@@ -12,6 +12,8 @@ module.exports = [
     CFTOOLS_SERVER_API_ID: 'YOUR_SERVER_API_ID',
     SERVER_IPV4: '0.0.0.0',
     SERVER_PORT: 2302,
+    CFTOOLS_WEBHOOK_CHANNEL_ID: '806479539110674472',
+    CFTOOLS_WEBHOOK_USER_ID: '290182686365188096',
 
     // Command config
     STATISTICS_INCLUDE_ZONES_HEATMAP: true,
@@ -58,8 +60,11 @@ module.exports = [
     // Watch list config
     WATCH_LIST_CHANNEL_ID: '806479539110674472',
     WATCH_LIST_NOTIFICATION_ROLE_ID: '1112020551817502860',
-    CFTOOLS_WEBHOOK_CHANNEL_ID: '806479539110674472',
-    CFTOOLS_WEBHOOK_USER_ID: '290182686365188096',
+
+    // Kill Feed config
+    USE_KILL_FEED: true,
+    KILL_FEED_DELAY: 5,
+    KILL_FEED_CHANNEL_ID: '806479539110674472',
 
     // Leaderboard config
     LEADERBOARD_DEFAULT_SORTING_STAT: 'OVERALL',
