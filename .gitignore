@@ -1,3 +1,7 @@
+# LokiJS database
+*.db
+*.db~
+
 # Logs
 logs
 *.log
