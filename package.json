@@ -33,16 +33,16 @@
     "types": "npx -p typescript tsc src/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir types"
   },
   "dependencies": {
-    "@discordjs/rest": "^1.7.0",
+    "@discordjs/rest": "^2.0.0",
     "@mirasaki/logger": "^1.0.5",
     "cftools-sdk": "^2.2.0",
     "common-tags": "^1.8.2",
-    "discord.js": "^14.11.0",
+    "discord.js": "^14.12.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "heatmap.js": "^2.0.5",
-    "lokijs": "^1.5.12",
-    "puppeteer": "^20.8.3"
+    "puppeteer": "^21.0.3",
+    "lokijs": "^1.5.12"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
@@ -53,8 +53,8 @@
     "@semantic-release/release-notes-generator": "^11.0.4",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.45.0",
-    "eslint-plugin-sonarjs": "^0.19.0",
+    "eslint": "^8.47.0",
+    "eslint-plugin-sonarjs": "^0.20.0",
     "nodemon": "^3.0.1",
     "semantic-release": "^21.0.7"
   },
