@@ -62,7 +62,7 @@ module.exports = new ChatInputCommand({
 
     // Check availability
     if (!sessions || !sessions[0]) {
-      interaction.editReply(`${ emojis.error } ${ member }, no one is currently online on \`**${ serverCfg.NAME }**\``);
+      interaction.editReply(`${ emojis.error } ${ member }, no one is currently online on **\`${ serverCfg.NAME }\`**`);
       return;
     }
 
