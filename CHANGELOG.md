@@ -1,3 +1,29 @@
+# [1.3.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.2.0...v1.3.0) (2023-10-26)
+
+
+### Bug Fixes
+
+* improve description for notify-player option ([287484a](https://github.com/Mirasaki/cftools-discord-bot/commit/287484aca283c19160499a56717df075ae72bc80))
+* wrong discord formatting ([d05e2cb](https://github.com/Mirasaki/cftools-discord-bot/commit/d05e2cb2e5dcb4ff1e796b5c144cef6777e1c34a))
+
+
+### Features
+
+* /change-in-game-time ([8b15500](https://github.com/Mirasaki/cftools-discord-bot/commit/8b15500abc85806ad09860c8bcb0561f5bab8439))
+* /kill-player command ([a9a1778](https://github.com/Mirasaki/cftools-discord-bot/commit/a9a1778cfb74d76002a5ce798abfd173cccfd74d))
+* /strip-player command, remove all possessions ([219289e](https://github.com/Mirasaki/cftools-discord-bot/commit/219289ead96ae69112e6341dfde0a58d974de0e1))
+* /wipe-world-ai command ([bb7d628](https://github.com/Mirasaki/cftools-discord-bot/commit/bb7d6287ac3f43aaccc999c22a0872cf90d3de7c))
+* /wipe-world-vehicles ([660e89c](https://github.com/Mirasaki/cftools-discord-bot/commit/660e89c3513dc11ed5dd0a92aec4903785bac5f4))
+* add use stormy weather command ([f1081bd](https://github.com/Mirasaki/cftools-discord-bot/commit/f1081bdb6899cf0271ce79a185383478e336083f))
+* add use sunny weather command ([9e574ca](https://github.com/Mirasaki/cftools-discord-bot/commit/9e574ca3ff85fcb5b8c456451ba83476674a06ec))
+* dedicated category for teleports ([993542b](https://github.com/Mirasaki/cftools-discord-bot/commit/993542b96abd1d64a06b5bbaab2ddbb51134c3c6))
+* delayed kill-feed ([8f75378](https://github.com/Mirasaki/cftools-discord-bot/commit/8f75378e56a606925d76df611599d28091ab16b3))
+* include POST GameLabs action request ([8072751](https://github.com/Mirasaki/cftools-discord-bot/commit/807275159676d30c14d958e9abce1159a3d12b2f))
+* notify player on /heal option/parameter ([c2c10c5](https://github.com/Mirasaki/cftools-discord-bot/commit/c2c10c55c78459c342f985870de177bfbe71c1e2))
+* spawn item on coords command ([e57827e](https://github.com/Mirasaki/cftools-discord-bot/commit/e57827e880cc7b8b9224adb0f80cf73507c176d6))
+* strip player ([4a3f0d5](https://github.com/Mirasaki/cftools-discord-bot/commit/4a3f0d5c714233bc28db07776ecf93b64c93fa0d))
+* use player in command names for ambiguity ([67b539c](https://github.com/Mirasaki/cftools-discord-bot/commit/67b539cb42dd8e00b2df75d4856fe03257879246))
+
 # [1.2.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.1.0...v1.2.0) (2023-08-19)
 
 
