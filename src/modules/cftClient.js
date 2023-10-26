@@ -301,17 +301,18 @@ const postGameLabsAction = async (
   parameters = {}
 ) => {
   try {
+    const body = {
+      actionCode,
+      actionContext,
+      parameters
+    };
+    if (referenceKey) body.referenceKey = referenceKey;
     const data = await fetch(
       `${ CFTOOLS_API_URL }/server/${ CFTOOLS_SERVER_API_ID }/GameLabs/action`,
       {
         method: 'POST',
         headers: { Authorization: `Bearer ${ await getAPIToken() }` },
-        body: JSON.stringify({
-          actionCode,
-          actionContext,
-          referenceKey,
-          parameters
-        })
+        body: JSON.stringify(body)
       }
     );
     return data?.status === 204;
