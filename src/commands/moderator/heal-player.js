@@ -21,7 +21,7 @@ module.exports = new ChatInputCommand({
       requiredPlayerSessionOption,
       {
         name: 'notify-player',
-        description: 'Send a DM to the player with the message, default true',
+        description: 'Send a DM to the player as a notification, default true',
         type: ApplicationCommandOptionType.Boolean,
         required: false
       }
