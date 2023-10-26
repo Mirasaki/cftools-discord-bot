@@ -4,22 +4,35 @@ const {
   requiredPlayerSessionOption,
   requiredServerConfigCommandOption,
   getPlayerSessionOptionValue,
-  cftClient
+  cftClient,
+  messageSurvivor
 } = require('../../modules/cftClient');
 const { ChatInputCommand } = require('../../classes/Commands');
 const { ServerApiId } = require('cftools-sdk');
+const { ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = new ChatInputCommand({
   global: true,
   permLevel: 'Moderator',
   data: {
     description: 'Heal a player that is currently online',
-    options: [ requiredServerConfigCommandOption, requiredPlayerSessionOption ]
+    options: [
+      requiredServerConfigCommandOption,
+      requiredPlayerSessionOption,
+      {
+        name: 'notify-player',
+        description: 'Send a DM to the player as a notification, default true',
+        type: ApplicationCommandOptionType.Boolean,
+        required: false
+      }
+
+    ]
   },
   run: async (client, interaction) => {
     // Destructuring and assignments
     const { member } = interaction;
     const { emojis } = client.container;
+    const notifyPlayer = interaction.options.getBoolean('notify-player') ?? true;
     const serverCfg = getServerConfigCommandOptionValue(interaction);
 
     // Deferring our reply
@@ -42,6 +55,11 @@ module.exports = new ChatInputCommand({
     catch (err) {
       handleCFToolsError(interaction, err);
       return;
+    }
+
+    // Notify player
+    if (notifyPlayer) {
+      await messageSurvivor(serverCfg.CFTOOLS_SERVER_API_ID, session.id, 'You have been healed by an administrator');
     }
 
     // Ok, feedback
