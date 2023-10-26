@@ -1,6 +1,11 @@
 name: first-time-setup
 run-name: Initialize repo from template
 
+# Todo: This workflow is not working as intended - other workflows
+# like deploy.yml are still running before this one finishes.
+
+# This workflow is triggered when a user creates a new repo from the template.
+
 on:
   # run when branch created (repo generated from template)
   create:
