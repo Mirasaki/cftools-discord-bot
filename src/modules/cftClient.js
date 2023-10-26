@@ -293,6 +293,37 @@ const kickPlayer = async (
   }
 };
 
+const postGameLabsAction = async (
+  CFTOOLS_SERVER_API_ID,
+  actionCode,
+  actionContext,
+  referenceKey,
+  parameters = {}
+) => {
+  try {
+    const data = await fetch(
+      `${ CFTOOLS_API_URL }/server/${ CFTOOLS_SERVER_API_ID }/GameLabs/action`,
+      {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${ await getAPIToken() }` },
+        body: JSON.stringify({
+          actionCode,
+          actionContext,
+          referenceKey,
+          parameters
+        })
+      }
+    );
+    return data?.status === 204;
+  }
+  catch (err) {
+    logger.syserr('Error encounter while POSTing GameLabs action');
+    logger.printErr(err);
+    return null;
+  }
+};
+
+
 // Position data isn't currently included in cftools-sdk =(
 // JK, FlorianSW added it =)
 // const gsmCache = new Map();
@@ -353,5 +384,6 @@ module.exports = {
   getAPIToken,
   messageSurvivor,
   broadcastMessage,
-  kickPlayer
+  kickPlayer,
+  postGameLabsAction
 };
