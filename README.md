@@ -59,6 +59,9 @@
 - Direct Message (private) online players
 - Heal players
 - Kick players
+- Kill players
+- Manage time & weather
+- Strip players, removing all their possessions
 - Spawn items on players
 - Teleport players
   - Comes with support for custom (autocomplete enabled) teleport locations (`/teleport-location`), instead of having to provide coordinates (still supported in `/teleport` command)
