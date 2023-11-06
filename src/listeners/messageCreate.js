@@ -11,6 +11,12 @@ module.exports = async (client, msg) => {
   // Check available
   if (!msg.guild || msg.guild.available === false) return;
 
+  // Run watch list checks
+  checkIsWatchListMsg(msg);
+
+  // Run delayed kill feed checks
+  checkIsDelayedKillFeedMsg(msg);
+
   // Ignore bots
   if (msg.author.bot) return;
 
@@ -24,12 +30,6 @@ module.exports = async (client, msg) => {
   // or for messages that don't have textContent but only embeds/files/components,
   // the latter of which is ignored by the #bot check
   if (!content || content.length === 0) return;
-
-  // Run watch list checks
-  checkIsWatchListMsg(msg);
-
-  // Run delayed kill feed checks
-  checkIsDelayedKillFeedMsg(msg);
 
   // Member property isn't available, which is required
   // This can happen in partial API outages

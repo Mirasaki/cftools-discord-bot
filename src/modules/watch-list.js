@@ -42,7 +42,7 @@ const checkIsWatchListMsg = async (msg) => {
     if (!activePlayerEntry) continue;
 
     // Send the notification
-    const text = `<@&${ WATCH_LIST_NOTIFICATION_ROLE_ID }> - A player that's on the watch-list just logged in! (**\`${ activePlayerEntry }\`**)`;
+    const text = `<@&${ WATCH_LIST_NOTIFICATION_ROLE_ID }> - A player that's on the watch-list just logged in!\n[**\`${ activePlayerEntry }\`**](https://app.cftools.cloud/profile/${ activePlayerEntry })`;
     await webhookTargetChannel.send(text);
   }
 };
