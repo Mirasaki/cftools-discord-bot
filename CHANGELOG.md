@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.3.0...v1.4.0) (2023-11-06)
+
+
+### Bug Fixes
+
+* run webhook functionality before is bot check ([5729608](https://github.com/Mirasaki/cftools-discord-bot/commit/5729608fbbf872c6e5d5bcaf7254e5887d0fd2d9))
+
+
+### Features
+
+* use cftools link for watch list ([8a0daf3](https://github.com/Mirasaki/cftools-discord-bot/commit/8a0daf3e54e7abb17e12d4cbca125058306f87ce))
+
 # [1.3.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.2.0...v1.3.0) (2023-10-26)
 
 
