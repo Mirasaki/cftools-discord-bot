@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.4.0...v1.4.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* update cftools-sdk to latest, fix player statistics references ([fea3aa7](https://github.com/Mirasaki/cftools-discord-bot/commit/fea3aa7cbc29bf8e8f6c2edf8cb034623c8fb104))
+
 # [1.4.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.3.0...v1.4.0) (2023-11-06)
 
 
