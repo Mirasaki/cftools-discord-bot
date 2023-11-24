@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.4.1...v1.5.0) (2023-11-24)
+
+
+### Bug Fixes
+
+* check watch-list exists before running ([9c5e0de](https://github.com/Mirasaki/cftools-discord-bot/commit/9c5e0debeee61451abb60f1af2a24bfb25dcc548))
+* update v2 reference for kdr ([0b72a14](https://github.com/Mirasaki/cftools-discord-bot/commit/0b72a14f55802786ddfe45652841f90a4afcaa21))
+
+
+### Features
+
+* **leaderboard:** support OVERALL default ranking stat ([e504321](https://github.com/Mirasaki/cftools-discord-bot/commit/e504321bd63ff9abdfde6f2900b380a4761d5107))
+
 ## [1.4.1](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.4.0...v1.4.1) (2023-11-17)
 
 
