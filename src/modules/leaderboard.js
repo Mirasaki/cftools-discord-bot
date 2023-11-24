@@ -61,7 +61,7 @@ const buildLeaderboardEmbedMessages = (guild, res, isDefaultQuery, statToGet, pl
         value: stripIndents`
             Kills: **${ e.kills ?? 0 }**
             Deaths: **${ e.deaths ?? 0 }**
-            KD: **${ e.killDeathRation ?? '1.00' }**
+            KD: **${ e.killDeathRatio ?? '1.00' }**
             LK: **${ e.longestKill ?? '-' }m**
           `,
         inline: true

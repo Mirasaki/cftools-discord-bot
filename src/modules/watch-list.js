@@ -16,6 +16,8 @@ const checkIsWatchListMsg = async (msg) => {
   const settings = getGuildSettings(guild.id);
   const { watchList } = settings;
 
+  if (!watchList) return false;
+
   for await (const cfg of serverConfig) {
     const {
       WATCH_LIST_CHANNEL_ID,
