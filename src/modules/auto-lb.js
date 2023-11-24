@@ -32,7 +32,8 @@ const performAutoLb = async (client, {
   AUTO_LB_CHANNEL_ID,
   AUTO_LB_PLAYER_LIMIT,
   AUTO_LB_REMOVE_OLD_MESSAGES,
-  AUTO_LB_STAT
+  AUTO_LB_STAT,
+  OVERALL_RANKING_STAT
 }) => {
   // Resolve the automatic leaderboard channel and stop if it's not available
   const autoLbChannel = await getAutoLbChannel(client, AUTO_LB_CHANNEL_ID);
@@ -49,7 +50,11 @@ const performAutoLb = async (client, {
   let res;
   try {
     // Fetching our leaderboard data from the CFTools API
-    const statToGet = Statistic[AUTO_LB_STAT];
+    const statToGet = Statistic[
+      AUTO_LB_STAT === 'OVERALL'
+        ? OVERALL_RANKING_STAT ?? Statistic.KILL_DEATH_RATIO
+        : AUTO_LB_STAT
+    ];
     res = await cftClient
       .getLeaderboard({
         serverApiId: ServerApiId.of(CFTOOLS_SERVER_API_ID),

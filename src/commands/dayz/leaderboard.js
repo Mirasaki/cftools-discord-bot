@@ -41,7 +41,7 @@ module.exports = new ChatInputCommand({
       ?? 'OVERALL';
     const statToGet = Statistic[
       statStr === 'OVERALL'
-        ? 'KILL_DEATH_RATIO'
+        ? serverCfg.OVERALL_RANKING_STAT ?? 'KILL_DEATH_RATIO'
         : statStr
     ];
 
