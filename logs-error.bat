@@ -1,1 +1,0 @@
-START npm run pm2:logsError
