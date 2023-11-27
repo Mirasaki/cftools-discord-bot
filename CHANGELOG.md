@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.5.0...v1.5.1) (2023-11-27)
+
+
+### Bug Fixes
+
+* another breaking player-statistics API change ([9b79a23](https://github.com/Mirasaki/cftools-discord-bot/commit/9b79a23e971c645e391f18fe97261d1fb7a62e1a))
+
 # [1.5.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.4.1...v1.5.0) (2023-11-24)
 
 
