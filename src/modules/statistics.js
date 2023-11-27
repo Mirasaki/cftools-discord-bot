@@ -67,7 +67,7 @@ const playerStatisticsCtx = async (cfg, data) => {
           **Deaths:** ${ totalDeaths ?? 0 } (${ deaths.other } PvP)
           **Hits:** ${ hits ?? 0 }
           **KDRatio:** ${ kdratio ?? 0 }
-          **Kills:** ${ kills ?? 0 }
+          **Kills:** ${ kills?.players ?? 0 }
           **Longest Kill:** ${ longestKill ?? 0 } m
           **Longest Shot:** ${ longestShot ?? 0 } m
           **Suicides:** ${ deaths.suicides ?? 0 }
