@@ -8,17 +8,22 @@ const checkIsDelayedKillFeedMsg = async (msg) => {
     author,
     cleanContent
   } = msg;
-  const isKillMsg = cleanContent.indexOf(' got killed by ') >= 0;
-  if (!isKillMsg) return false;
-
   for await (const cfg of serverConfig) {
     const {
       USE_KILL_FEED,
       KILL_FEED_DELAY,
       KILL_FEED_CHANNEL_ID,
       CFTOOLS_WEBHOOK_CHANNEL_ID,
-      CFTOOLS_WEBHOOK_USER_ID
+      CFTOOLS_WEBHOOK_USER_ID,
+      KILL_FEED_MESSAGE_IDENTIFIER,
+      KILL_FEED_REMOVE_IDENTIFIER
     } = cfg;
+    const isKillMsg = cleanContent.indexOf(
+      KILL_FEED_MESSAGE_IDENTIFIER
+      ?? ' got killed by '
+    ) >= 0;
+    if (!isKillMsg) continue;
+
     const isTargetChannel = channelId === CFTOOLS_WEBHOOK_CHANNEL_ID;
     const isTargetUser = CFTOOLS_WEBHOOK_USER_ID === (
       process.env.NODE_ENV === 'production'
@@ -36,7 +41,11 @@ const checkIsDelayedKillFeedMsg = async (msg) => {
     // Send the notification
     await new Promise((resolve) => {
       setTimeout(async () => {
-        const feedMsg = await webhookTargetChannel.send(cleanContent);
+        const feedMsg = await webhookTargetChannel.send(
+          KILL_FEED_REMOVE_IDENTIFIER
+            ? cleanContent.replaceAll(KILL_FEED_MESSAGE_IDENTIFIER, '')
+            : cleanContent
+        );
         resolve(feedMsg);
       }, KILL_FEED_DELAY * 1000);
     });
