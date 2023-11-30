@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.5.1...v1.6.0) (2023-11-30)
+
+
+### Features
+
+* allow dynamic events to be included in the kill-feed module ([be0c117](https://github.com/Mirasaki/cftools-discord-bot/commit/be0c11740e62dd4e7f644783fc5c4a55d6d07c1f))
+
 ## [1.5.1](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.5.0...v1.5.1) (2023-11-27)
 
 
