@@ -65,6 +65,8 @@ module.exports = [
     USE_KILL_FEED: true,
     KILL_FEED_DELAY: 5,
     KILL_FEED_CHANNEL_ID: '806479539110674472',
+    KILL_FEED_MESSAGE_IDENTIFIER: ' got killed by ',
+    KILL_FEED_REMOVE_IDENTIFIER: false,
 
     // Leaderboard config
     OVERALL_RANKING_STAT: 'KILLS',
