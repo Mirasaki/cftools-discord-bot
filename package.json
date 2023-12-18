@@ -42,7 +42,7 @@
     "express": "^4.18.2",
     "heatmap.js": "^2.0.5",
     "lokijs": "^1.5.12",
-    "puppeteer": "^21.5.2"
+    "puppeteer": "^21.6.1"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
