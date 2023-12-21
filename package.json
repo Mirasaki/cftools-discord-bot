@@ -35,7 +35,7 @@
   "dependencies": {
     "@discordjs/rest": "^2.2.0",
     "@mirasaki/logger": "^1.0.5",
-    "cftools-sdk": "^3.1.1",
+    "cftools-sdk": "^3.1.5",
     "common-tags": "^1.8.2",
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
