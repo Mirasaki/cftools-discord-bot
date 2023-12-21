@@ -324,6 +324,28 @@ const postGameLabsAction = async (
   }
 };
 
+const rconCommand = async (
+  CFTOOLS_SERVER_API_ID,
+  command
+) => {
+  try {
+    const data = await fetch(
+      `${ CFTOOLS_API_URL }/server/${ CFTOOLS_SERVER_API_ID }/raw`,
+      {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${ await getAPIToken() }` },
+        body: JSON.stringify({ command })
+      }
+    );
+    return data?.status === 204;
+  }
+  catch (err) {
+    logger.syserr(`Error encounter while executing RCON command "${ command }"`);
+    logger.printErr(err);
+    return null;
+  }
+};
+
 
 // Position data isn't currently included in cftools-sdk =(
 // JK, FlorianSW added it =)
@@ -386,5 +408,6 @@ module.exports = {
   messageSurvivor,
   broadcastMessage,
   kickPlayer,
-  postGameLabsAction
+  postGameLabsAction,
+  rconCommand
 };
