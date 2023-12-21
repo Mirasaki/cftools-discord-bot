@@ -8,6 +8,9 @@ const {
 const { ServerApiId } = require('cftools-sdk');
 const { stripIndents } = require('common-tags');
 
+// Timed: 76561199003950745
+// Permanent: 76561197960604125
+
 const steam64Regex = /^7656119[0-9]{10}$/;
 const steam64Option = {
   name: 'steam64',
@@ -23,6 +26,15 @@ const durationOption = {
   required: true,
   min_value: -1,
   max_value: 365
+};
+
+const commentOption = {
+  name: 'comment',
+  description: 'A comment to add to the priority queue entry',
+  type: ApplicationCommandOptionType.String,
+  required: false,
+  min_length: 1,
+  max_length: 100
 };
 
 module.exports = new ChatInputCommand({
@@ -44,7 +56,8 @@ module.exports = new ChatInputCommand({
         options: [
           requiredServerConfigCommandOption,
           steam64Option,
-          durationOption
+          durationOption,
+          commentOption
         ]
       },
       {
@@ -68,16 +81,22 @@ module.exports = new ChatInputCommand({
     // Deferring our reply
     await interaction.deferReply({ ephemeral: true });
 
-    const entryEmbed = ({ steam64, entry }) => new EmbedBuilder()
+    const entryEmbed = ({
+      steam64, cftoolsId, entry
+    }) => new EmbedBuilder()
       .setColor(colorResolver())
-      .setAuthor(`${ guild.name }`, guild.iconURL({ forceStatic: false }))
+      .setAuthor({
+        name: `${ guild.name }`,
+        iconURL: guild.iconURL({ forceStatic: false })
+      })
       .setTitle('Priority Queue')
       .setDescription(stripIndents`
         **Steam64:** \`${ steam64 }\`
+        **CFTools:** [${ cftoolsId.id }](<https://app.cftools.cloud/profile/${ cftoolsId.id }>)
         **Duration:** ${ entry.expiration === 'Permanent' ? 'Permanent' : `${ Math.round((entry.expiration - Date.now()) / MS_IN_ONE_DAY) } days` }
-        **Added by:** ${ entry.addedBy }
-        **Added at:** ${ entry.addedAt }
-        ${ entry.expiration }
+        **Comment:** ${ entry.comment ?? 'None' }
+        **Created by:** [${ entry.createdBy.id }](<https://app.cftools.cloud/profile/${ entry.createdBy.id }>)
+        **Created:** <t:${ Math.round(entry.created.valueOf() / 1000) }:R>
       `)
       .setTimestamp();
 
@@ -85,6 +104,7 @@ module.exports = new ChatInputCommand({
       case 'add': {
         const steam64 = options.getString('steam64');
         const duration = options.getInteger('duration');
+        const comment = options.getString('comment') ?? null;
 
         if (!steam64Regex.test(steam64)) {
           interaction.editReply({ content: `${ emojis.error } \`${ steam64 }\` is not a valid Steam64 ID` });
@@ -100,23 +120,21 @@ module.exports = new ChatInputCommand({
           return;
         }
 
-        await cftClient.putPriorityQueue({
+        const add = await cftClient.putPriorityQueue({
           serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
-          id: { id: cftoolsId },
-          expires: duration === -1 ? 'Permanent' : new Date(Date.now() + duration * MS_IN_ONE_DAY)
-        }).catch(() => null);
+          id: cftoolsId,
+          expires: duration === -1 ? 'Permanent' : new Date(Date.now() + duration * MS_IN_ONE_DAY),
+          comment
+        })
+          .catch((err) => {
+            interaction.editReply({ content: `${ emojis.error } Error encountered while adding priority queue entry for \`${ steam64 }\`: ${ err.message }` });
+            return null;
+          })
+          .then(() => true);
 
-        const entry = await cftClient.getPriorityQueue({
-          serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
-          playerId: { id: cftoolsId }
-        }).catch(() => null);
+        if (add === null) return;
 
-        if (!entry) {
-          interaction.editReply({ content: `${ emojis.error } Failed to add \`${ steam64 }\` to the priority queue` });
-          return;
-        }
-
-        return interaction.editReply({ embeds: [ entryEmbed(entry) ] });
+        return interaction.editReply({ content: `${ emojis.success } Added \`${ steam64 }\` to the priority queue` });
       }
 
       case 'remove': {
@@ -136,17 +154,42 @@ module.exports = new ChatInputCommand({
           return;
         }
 
-        const entry = await cftClient.deletePriorityQueue({
+        const entry = await cftClient.getPriorityQueue({
           serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
-          id: cftoolsId
-        }).catch(() => null);
+          playerId: cftoolsId
+        }).catch((err) => {
+          interaction.editReply({ content: `${ emojis.error } Error encountered while fetching priority queue entry for \`${ steam64 }\`: ${ err.message }` });
+          return undefined;
+        });
 
         if (!entry) {
-          interaction.editReply({ content: `${ emojis.error } Failed to remove \`${ steam64 }\` from the priority queue` });
-          return;
+          if (entry === null) {
+            interaction.editReply({ content: `${ emojis.error } \`${ steam64 }\` doesn't currently have priority queue` });
+            return;
+          }
+          else return;
         }
 
-        return interaction.editReply({ embeds: [ entryEmbed(entry) ] });
+        await interaction.editReply({ content: `${ emojis.success } Removing \`${ steam64 }\` from the priority queue` });
+
+        let valid;
+        await cftClient.deletePriorityQueue({
+          serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
+          playerId: cftoolsId
+        }).catch((err) => {
+          valid = false;
+          interaction.editReply({ content: `${ emojis.error } Error encountered while removing priority queue entry for \`${ steam64 }\`: ${ err.message }` });
+        });
+
+        if (!valid) return;
+
+        return interaction.editReply({ embeds: [
+          entryEmbed({
+            steam64,
+            cftoolsId,
+            entry
+          })
+        ] });
       }
 
       case 'view':
@@ -164,15 +207,27 @@ module.exports = new ChatInputCommand({
 
         const entry = await cftClient.getPriorityQueue({
           serverApiId: ServerApiId.of(serverCfg.CFTOOLS_SERVER_API_ID),
-          playerId: { id: cftoolsId }
-        }).catch(() => null);
+          playerId: cftoolsId
+        }).catch((err) => {
+          interaction.editReply({ content: `${ emojis.error } Error encountered while fetching priority queue entry for \`${ steam64 }\`: ${ err.message }` });
+          return undefined;
+        });
 
         if (!entry) {
-          interaction.editReply({ content: `${ emojis.error } No priority queue entry found for \`${ steam64 }\`` });
-          return;
+          if (entry === null) {
+            interaction.editReply({ content: `${ emojis.error } \`${ steam64 }\` doesn't currently have priority queue` });
+            return;
+          }
+          else return;
         }
 
-        return interaction.editReply({ embeds: [ entryEmbed(entry) ] });
+        return interaction.editReply({ embeds: [
+          entryEmbed({
+            steam64,
+            cftoolsId,
+            entry
+          })
+        ] });
       }
     }
   }
