@@ -1,3 +1,17 @@
+# [1.7.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.6.0...v1.7.0) (2023-12-21)
+
+
+### Bug Fixes
+
+* **server-info:** lower mods displayed, avoid max characters rate-limit ([d60bd37](https://github.com/Mirasaki/cftools-discord-bot/commit/d60bd37362d6a0feda73d4ca3ac5c0bd840e3807))
+* test and finish up prio queue ([fb17334](https://github.com/Mirasaki/cftools-discord-bot/commit/fb17334e3f1b4221dabb6207ded0ca51be1547a9))
+
+
+### Features
+
+* include manual prio queue management (requested) ([0994fb3](https://github.com/Mirasaki/cftools-discord-bot/commit/0994fb3cf4b3284d5f27b54d01225e035c55475f))
+* schedule shutdown functionality ([858ab97](https://github.com/Mirasaki/cftools-discord-bot/commit/858ab97e9dc82b98b06b77b8e3bffa036fe9168d))
+
 # [1.6.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.5.1...v1.6.0) (2023-11-30)
 
 
