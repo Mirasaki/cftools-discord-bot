@@ -57,10 +57,10 @@ module.exports = new ChatInputCommand({
     // Overview embed
     ctx.embeds.push(serverInfoOverviewEmbed(data, flags, guild));
 
-    // If we have mods, prepare embed for every 50 entries
+    // If we have mods, prepare embed for every 25 entries
     if (serverCfg.SERVER_INFO_INCLUDE_MOD_LIST && mods && mods[0]) {
-      for (let i = 0; i < mods.length; i += 50) {
-        const chunk = mods.slice(i, i + 50);
+      for (let i = 0; i < mods.length; i += 25) {
+        const chunk = mods.slice(i, i + 25);
         ctx.embeds.push({
           title: i === 0 ? `Mod List (${ mods.length })` : null,
           color: colorResolver(data.online ? colors.success : colors.error),
