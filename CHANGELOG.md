@@ -1,3 +1,15 @@
+# [1.8.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.7.0...v1.8.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* dont invalidate unknown interactions ([ed12d11](https://github.com/Mirasaki/cftools-discord-bot/commit/ed12d116edd932f3bf69bcbb3d61d89f8359725f))
+
+
+### Features
+
+* display prio queue public options ([229199e](https://github.com/Mirasaki/cftools-discord-bot/commit/229199ea6d3a5a138fb2bf2f2917956456832c7a))
+
 # [1.7.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.6.0...v1.7.0) (2023-12-21)
 
 
