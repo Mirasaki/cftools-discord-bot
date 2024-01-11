@@ -47,7 +47,16 @@ module.exports = new ChatInputCommand({
         name: 'view',
         description: 'Display the current configuration',
         type: ApplicationCommandOptionType.Subcommand,
-        options: [ requiredServerConfigCommandOption, steam64Option ]
+        options: [
+          requiredServerConfigCommandOption,
+          steam64Option,
+          {
+            name: 'public',
+            description: 'Whether to display the priority queue embed publicly',
+            type: ApplicationCommandOptionType.Boolean,
+            required: false
+          }
+        ]
       },
       {
         name: 'add',
@@ -74,12 +83,13 @@ module.exports = new ChatInputCommand({
     const { guild, options } = interaction;
     const { emojis } = client.container;
     const subcommand = options.getSubcommand();
+    const showPublic = options.getBoolean('public') ?? false;
 
     // Check if a proper server option is provided
     const serverCfg = getServerConfigCommandOptionValue(interaction);
 
     // Deferring our reply
-    await interaction.deferReply({ ephemeral: true });
+    await interaction.deferReply({ ephemeral: !showPublic });
 
     const entryEmbed = ({
       steam64, cftoolsId, entry
