@@ -81,11 +81,6 @@ const runCommand = (client, interaction, activeId, cmdRunTimeStart) => {
 
   // Check for late API changes
   if (!clientCmd) {
-    if (clientCanReply) interaction.reply({
-      content: `${ emojis.error } ${ member }, this command currently isn't available.`,
-      ephemeral: true
-    });
-    logger.syserr(`Missing interaction listener for "${ activeId }" (name for commands, customId for components - ignored if starts with "@")`);
     return;
   }
 
