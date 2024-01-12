@@ -99,6 +99,8 @@ const createHitZonesHeatMap = async (cfg, hitZones = {
   // Resolve our browser
   const browser = await getBrowser(cfg);
 
+  if (!browser) throw new Error('Failed to resolve browser instance - Chromium instance couldn\'t be initialized. Refer to the documentation for more information, or turn STATISTICS_INCLUDE_ZONES_HEATMAP off in your server configuration.');
+
   // Open a new page
   const page = await browser.newPage();
 
