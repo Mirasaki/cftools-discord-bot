@@ -1,3 +1,13 @@
+## [1.8.1](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.8.0...v1.8.1) (2024-02-13)
+
+
+### Bug Fixes
+
+* catch Chromium browser not being able to initialize ([5f1e295](https://github.com/Mirasaki/cftools-discord-bot/commit/5f1e2955e0f21e2b5bc12ce40b87043681bab424))
+* undefined being displayed in k/d leaderboard ([75c7a57](https://github.com/Mirasaki/cftools-discord-bot/commit/75c7a5715d7d1344811ba6b0d8a5ae67a3d24461))
+* undefined being displayed in k/d leaderboard ([cc7df86](https://github.com/Mirasaki/cftools-discord-bot/commit/cc7df861355041efa49b3825c0c902d24a9f38c7))
+* undefined being displayed in k/d leaderboard ([b9c2222](https://github.com/Mirasaki/cftools-discord-bot/commit/b9c222259bbf9e5fb8717add47936faa2f8aa854))
+
 # [1.8.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.7.0...v1.8.0) (2024-01-11)
 
 
