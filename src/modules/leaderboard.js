@@ -72,7 +72,7 @@ const buildLeaderboardEmbedMessages = (guild, res, isDefaultQuery, statToGet, pl
   // Resolve fields for Statistic leaderboard
   else {
     const parameterMap = {
-      'kdratio': 'killDeathRation',
+      'kdratio': 'killDeathRatio',
       'longest_kill': 'longestKill',
       'longest_shot': 'longestShot'
     };
