@@ -25,16 +25,17 @@ const autoLbCycle = async (client) => {
   }
 };
 
-const performAutoLb = async (client, {
-  NAME,
-  CFTOOLS_SERVER_API_ID,
-  LEADERBOARD_BLACKLIST,
-  AUTO_LB_CHANNEL_ID,
-  AUTO_LB_PLAYER_LIMIT,
-  AUTO_LB_REMOVE_OLD_MESSAGES,
-  AUTO_LB_STAT,
-  OVERALL_RANKING_STAT
-}) => {
+const performAutoLb = async (client, serverCfg) => {
+  const {
+    NAME,
+    CFTOOLS_SERVER_API_ID,
+    LEADERBOARD_BLACKLIST,
+    AUTO_LB_CHANNEL_ID,
+    AUTO_LB_PLAYER_LIMIT,
+    AUTO_LB_REMOVE_OLD_MESSAGES,
+    AUTO_LB_STAT,
+    OVERALL_RANKING_STAT
+  } = serverCfg;
   // Resolve the automatic leaderboard channel and stop if it's not available
   const autoLbChannel = await getAutoLbChannel(client, AUTO_LB_CHANNEL_ID);
   if (!autoLbChannel) {
@@ -89,7 +90,8 @@ const performAutoLb = async (client, {
     whitelistedData,
     AUTO_LB_STAT === 'OVERALL',
     AUTO_LB_STAT,
-    playerLimit
+    playerLimit,
+    serverCfg
   );
 
   // Send the data

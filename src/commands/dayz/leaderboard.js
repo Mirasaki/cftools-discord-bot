@@ -107,7 +107,8 @@ module.exports = new ChatInputCommand({
       whitelistedData,
       isDefaultQuery,
       statToGet,
-      playerLimit
+      playerLimit,
+      serverCfg
     );
 
     // Responding to our request

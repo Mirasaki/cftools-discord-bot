@@ -43,7 +43,15 @@ const getStatisticOptions = (LEADERBOARD_STATS) => [
 
 // Dedicated function for building our embed data
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const buildLeaderboardEmbedMessages = (guild, res, isDefaultQuery, statToGet, playerLimit) => {
+const buildLeaderboardEmbedMessages = (
+  guild,
+  res,
+  isDefaultQuery,
+  statToGet,
+  playerLimit,
+  serverCfg
+// eslint-disable-next-line sonarjs/cognitive-complexity
+) => {
   // Initializing our embed vars
   let description = '';
   let fields = [];
@@ -53,7 +61,7 @@ const buildLeaderboardEmbedMessages = (guild, res, isDefaultQuery, statToGet, pl
 
   // Resolve fields for OVERALL leaderboard
   if (isDefaultQuery) {
-    description = `Overall Leaderboard for ${ guild.name }`;
+    description = `Overall Leaderboard for ${ serverCfg.NAME }`;
     fields = res.map((e, index) => {
       const noEmojiFallback = `${ (index + 1).toString() }.`;
       return {
@@ -86,7 +94,7 @@ const buildLeaderboardEmbedMessages = (guild, res, isDefaultQuery, statToGet, pl
     };
     description = `${ parseSnakeCaseArray([ statToGet ])
       .join('')
-      .toUpperCase() } Leaderboard for ${ guild.name }`;
+      .toUpperCase() } Leaderboard for ${ serverCfg.NAME }`;
     fields = res.map((e, index) => {
       return {
         name: `${ (index + 1).toString() }. ${ e.name }`,
