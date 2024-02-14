@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.8.1...v1.9.0) (2024-02-14)
+
+
+### Features
+
+* **lb:** show server name instead of guild name in embeds ([612072d](https://github.com/Mirasaki/cftools-discord-bot/commit/612072d1428392a458195130f3adbf1644b27bd4))
+
 ## [1.8.1](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.8.0...v1.8.1) (2024-02-13)
 
 
