@@ -1,6 +1,7 @@
 # Config
 .env
 *.env
+.env.example
 Procfile
 release.config.js
 
@@ -11,6 +12,7 @@ npm-debug.log
 
 # Ignoring all markdown files
 *.md
+tutorials
 
 # Github
 .git
@@ -27,11 +29,11 @@ docker-compose.yml
 # Linter files
 .markdownlint.json
 .eslintrc.json
-
-# Etc
-LICENSE
 linter-output.txt
-.env.example
-# .config.example.js used as fallback in test script
-tsconfig.json # Only used to generate types in development
-typings.d.ts # exported typings file
+
+# Only used to generate types in development
+tsconfig.json
+# Exported typings file
+typings.d.ts
+# README static files
+assets/showcase
