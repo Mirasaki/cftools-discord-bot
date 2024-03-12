@@ -25,6 +25,8 @@ tutorials
 Dockerfile
 *.Dockerfile
 docker-compose.yml
+*.docker-compose.yml
+.dockerignore
 
 # Linter files
 .markdownlint.json
