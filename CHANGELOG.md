@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.10.0...v1.10.1) (2024-03-12)
+
+
+### Performance Improvements
+
+* use read-only bind mount for config volumes ([990ae04](https://github.com/Mirasaki/cftools-discord-bot/commit/990ae04b198515bf622d11d02deedb600cfd410c))
+
 # [1.10.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.9.0...v1.10.0) (2024-03-12)
 
 
