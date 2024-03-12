@@ -2,13 +2,23 @@ version: '3.1'
 
 services:
   client:
-    build: .
-    container_name: client
-    restart: always
+    container_name: cftools-discord-bot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
     volumes:
-      # Bind mount, read-only app
-      - ./:/app:ro
-      # Anonymous volume
-      - /app/node_modules
+      - ./config/config.js:/app/config/config.js
+      - ./config/servers.js:/app/config/servers.js
+      - ./cftools-discord-bot.db:/app/cftools-discord-bot.db
     env_file:
-      - ./config/.env
+      - config/.env
+
+  puppeteer:
+    container_name: cftools-discord-bot-puppeteer
+    image: buildkite/puppeteer
+    restart: unless-stopped
+    volumes:
+      - ./cftools-discord-bot.db:/app/cftools-discord-bot.db
+    env_file:
+      - config/.env

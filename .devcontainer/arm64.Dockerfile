@@ -1,4 +1,4 @@
-FROM node:20-slim
+FROM arm64v8/node:20-slim
 
 # Please refer to https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-puppeteer-in-docker
 # for more information on running puppeteer in docker
