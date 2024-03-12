@@ -8,8 +8,8 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     volumes:
-      - ./config/config.js:/app/config/config.js
-      - ./config/servers.js:/app/config/servers.js
+      - ./config/config.js:/app/config/config.js:ro
+      - ./config/servers.js:/app/config/servers.js:ro
       - ./cftools-discord-bot.db:/app/cftools-discord-bot.db
     env_file:
       - config/.env
