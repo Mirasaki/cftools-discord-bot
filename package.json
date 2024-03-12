@@ -1,7 +1,7 @@
 {
   "name": "cftools-discord-bot",
   "description": "A discord bot template using discord.js",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "main": "src/index.js",
   "scripts": {
     "start": "node .",

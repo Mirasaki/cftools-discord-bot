@@ -1,3 +1,16 @@
+# [1.10.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.9.0...v1.10.0) (2024-03-12)
+
+
+### Bug Fixes
+
+* dockerignore ignore self ([4fc6983](https://github.com/Mirasaki/cftools-discord-bot/commit/4fc6983ad1206fb424de7555526728357c70f8ed))
+* **Docker:** update Dockerfile, docker-compose and .dockerignore ([ab6c4e3](https://github.com/Mirasaki/cftools-discord-bot/commit/ab6c4e374796d791f3a542144108219cdc375db1))
+
+
+### Features
+
+* add arm64 Dockerfile to devcontainer ([603312b](https://github.com/Mirasaki/cftools-discord-bot/commit/603312b1e09041366bc391c95cba354eccffbd36))
+
 # [1.9.0](https://github.com/Mirasaki/cftools-discord-bot/compare/v1.8.1...v1.9.0) (2024-02-14)
 
 
