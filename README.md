@@ -1,96 +1,175 @@
-<p align="center"><img src="assets/logo.png" alt="CFTools Bot Logo" height="60" style="border-radius:50px"/></p>
-<h1 align="center">CFTools Discord Bot</h1>
-<p align="center">A Discord bot that fully utilizes the CFTools Data API.</p>
+# Full Stack Example
 
-<div align='center'>
+This is an example of a full-stack (monorepo) application using Turborepo.
 
-  [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
-  ![build](https://img.shields.io/github/actions/workflow/status/mirasaki/cftools-discord-bot/test.yml)
-  [![CodeFactor](https://www.codefactor.io/repository/github/Mirasaki/cftools-discord-bot/badge)](https://www.codefactor.io/repository/github/Mirasaki/cftools-discord-bot)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  ![Docker Pulls](https://img.shields.io/docker/pulls/mirasaki/cftools-discord-bot)
-  ![version](https://img.shields.io/github/v/release/Mirasaki/cftools-discord-bot)
-  <!-- ![size](https://img.shields.io/docker/image-size/mirasaki/cftools-discord-bot) -->
+## What's inside?
 
-</div>
+This Turborepo includes the following packages/apps:
 
-<p align="center"><a href="/assets/showcase/thumbnail.gif"><img src="assets/showcase/thumbnail.gif" width="75%" style="border-radius:25px;box-shadow:black 2px 2px 25px;width:min(500px, 100%)"/></a>
+### Apps and Packages
 
-<br />
-<br />
-<h2 align="center">⭐ It's free, open-source, and self-host - meaning you're in full control</h2>
-<p align="center">
-  This project was created and open-sourced by <a href="https://mirasaki.dev" target="_blank">Mirasaki Development</a>. That means it's publicly available for anyone to grab and do whatever with (MIT licensed). This project will never be monetized, every feature will always be free (keep in mind CFTools has premium endpoints). All I need to keep adding new functionality and modules is some GitHub stars. Join the absolute <strong>legends</strong> below by clicking that Star button in the top-right of your screen, it doesn't cost you anything <strong>and</strong> means the world to us ❤️
-</p>
-<div align='center'>
+- `api`: an Express API
+- `web`: a [Next.js](https://nextjs.org/) app
+- `@repo/database`: [Prisma](https://www.prisma.io/) ORM wrapper to manage & access your database directly from multiple apps
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/jest-presets`: a collection of jest presets
+- `@repo/logger`: a logger that can be used in any app or package
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@repo/ui`: a stub React component library to be used in any application
 
-[![Stargazers repo roster for @Mirasaki/cftools-discord-bot](https://reporoster.com/stars/Mirasaki/cftools-discord-bot)](https://github.com/Mirasaki/cftools-discord-bot/stargazers)
-</div>
-<br />
-<br/>
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-<h2 id="showcase">🎥 Showcase</h2>
+### Utilities
 
-<details>
-<summary>Click to view</summary>
+This Turborepo has some additional tools already setup for you:
 
-![dm-survivor](./assets/showcase/dm-survivor.gif)
-![stats-normal](./assets/showcase/stats_normal.png)
-![admin-player-list](./assets/showcase/admin-player-list.png)
-![kick](./assets/showcase/kick.gif)
-![flagged-player-list](./assets/showcase/flagged-player-list.png)
-![server-info](./assets/showcase/server-info.png)
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Jest](https://jestjs.io) test runner for all things JavaScript
+- [Prettier](https://prettier.io) for code formatting
 
-</details>
+### Useful Commands
 
-<h2 id="features">🤩 Features</h2>
+- `pnpm build` - Build all packages
+- `pnpm dev` - Develop/run all packages locally
+- `pnpm lint` - Lint all packages
+- `pnpm release` - Release a new version of the packages
+- `pnpm clean` - Clean up all `node_modules` and `dist` folders (runs each package's clean script)
 
-- Discord > DayZ live chat feed - comes with a tag system and is **very** customizable
-- Watch List - Receive role-ping notifications when a player in a custom managed list logs in
-- Delayed Killfeed - Delay kill webhook messages (configurable) before forwarding them to a different/public channel
-- Player Lists
+### Remote Caching
 
-  - Public list
-  - Admin list with CFTools + Steam links
-  - Flagged list for potential troublesome accounts/players
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-- User-friendly in-game player auto complete
-- Broadcast messages to everyone on server
-- Direct Message (private) online players
-- Heal players
-- Kick players
-- Kill players
-- Manage time & weather
-- Strip players, removing all their possessions
-- Spawn items on players
-- Teleport players
-  - Comes with support for custom (autocomplete enabled) teleport locations (`/teleport-location`), instead of having to provide coordinates (still supported in `/teleport` command)
-  - Teleport multiple or all to online player
-  - Teleport multiple or all to customizable locations
-  - Currently looking for people to contribute, we'd like a strong default configuration for users to utilize. Check out [the config file example](./config/teleport-locations/chernarus.json) and determine if you'd like to contribute, create a pull request or contact me on Discord: Mirasaki#2287
-- Complete leaderboard integration with all available stats
-- Display detailed player/individual statistics, supports Steam64, BattlEye GUID, and Bohemia Interactive Id
-- Player hit zone % heat maps
-- Server info overview
-- And best of all, everything is configurable!
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-<h2 id="planned-features">💡 Planned Features</h2>
+```bash
+npx turbo login
+```
 
-- Execute raw RCon commands - I'm looking for someone that is very knowledgeable on available RCon command
-- Dedicated Server Status channel, overview with online/offline status
-- Manage Priority Queue
-- Manage Ban lists
-- Manage Whitelists
-- Custom GameLab action support
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-<h2 id="hosting">🖥️ Hosting</h2>
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
-We have partnered with [VYKIX.com](https://portal.vykix.com/aff.php?aff=17) after observing many of our clients using VYKIX services and products. Check them out for affordable and reliable hosting, they bring the **best DayZ hosting experience possible.** 📈
+```bash
+npx turbo link
+```
 
-<h2 id="installation">🔨 Installation</h2>
+### Database
 
-Check out [the wiki for this project](https://wiki.mirasaki.dev/docs/cftools-discord-bot) to learn how to configure and run this bot
+We use [Prisma](https://prisma.io/) to manage & access our database. As such you will need a database for this project, either locally or hosted in the cloud.
 
-> Open source, self-hosted, and MIT licensed, meaning you're in full control.
+To make this process easier, we offer a [`docker-compose.yml`](https://docs.docker.com/compose/) file to deploy a PostgreSQL server locally with a new database named `dayz-discord-integrations` (To change this, update the `.env` variables):
 
-<p align="center"><a href="https://github.com/Mirasaki/cftools-discord-bot#cftools-discord-bot"><img src="http://randojs.com/images/backToTopButton.png" alt="Back to top" height="29"/></a></p>
+```bash
+docker compose up -d
+```
+
+Once deployed you will need to copy the `.env.example` file to `.env` in order for Prisma to have a `DATABASE_URL` environment variable to access.
+
+```bash
+cp .env.example .env
+```
+
+If you added a custom database name, or use a cloud based database, you will need to update the `DATABASE_URL` in your `.env` accordingly.
+
+Once deployed, up & running, you will need to create & deploy migrations to your database to add the necessary tables. This can be done using [Prisma Migrate](https://www.prisma.io/migrate):
+
+```bash
+npx prisma migrate dev
+```
+
+If you need to push any existing migrations to the database, you can use either the Prisma db push or the Prisma migrate deploy command(s):
+
+```bash
+pnpm run db:push
+# OR
+pnpm run db:migrate:deploy
+```
+
+There is slight difference between the two commands & [Prisma offers a breakdown on which command is best to use](https://www.prisma.io/docs/concepts/components/prisma-migrate/db-push#choosing-db-push-or-prisma-migrate).
+
+An optional additional step is to seed some initial or fake data to your database using [Prisma's seeding functionality](https://www.prisma.io/docs/guides/database/seed-database).
+
+To do this update check the seed script located in `packages/database/src/seed.ts` & add or update any users you wish to seed to the database.
+
+Once edited run the following command to run tell Prisma to run the seed script defined in the Prisma configuration:
+
+```bash
+pnpm run db:seed
+```
+
+For further more information on migrations, seeding & more, we recommend reading through the [Prisma Documentation](https://www.prisma.io/docs/).
+
+## Production
+
+Local development with Docker is not recommended, as it is significantly slower than using `pnpm dev`. However, this repo is configured to be built with Docker and Docker Compose in production. To build and run the apps in this repo with Docker, follow the instructions below.
+
+```bash
+# Create a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+docker network create app_network
+
+# Build prod using new BuildKit engine
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose -f docker-compose.yml build
+
+# Start prod in detached mode
+docker compose -f docker-compose.yml up -d
+```
+
+Open <http://localhost:3000>.
+
+To shutdown all running containers:
+
+```bash
+# Stop all running containers
+docker kill $(docker ps -q) && docker rm $(docker ps -a -q)
+```
+
+### Docker Remote Caching
+
+This repo includes optional remote caching for Docker. In the Dockerfiles of the apps, uncomment the build arguments for `TURBO_TEAM` and `TURBO_TOKEN`. Then, pass these build arguments to your Docker build.
+
+You can test this behavior using a command like:
+
+```bash
+docker build -f apps/web/Dockerfile . --build-arg TURBO_TEAM=“your-team-name” --build-arg TURBO_TOKEN=“your-token“ --no-cache
+```
+
+### npm
+
+If you want to publish package to the public npm registry and make them publicly available, this is already setup.
+
+To publish packages to a private npm organization scope, **remove** the following from each of the `package.json`'s
+
+```diff
+- "publishConfig": {
+-  "access": "public"
+- },
+```
+
+### Changing the npm organization scope
+
+The npm organization scope for this design system starter is `@acme`. To change this, it's a bit manual at the moment, but you'll need to do the following:
+
+- Rename folders in `packages/*` to replace `acme` with your desired scope
+- Search and replace `acme` with your desired scope
+- Re-run `pnpm install`
+
+### GitHub Package Registry
+
+See [Working with the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+## Notes
+
+- No support for NextJS builds, see statement [here](https://nextjs.org/docs/architecture/turbopack#unsupported-features)

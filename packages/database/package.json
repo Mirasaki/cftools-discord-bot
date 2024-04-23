@@ -1,0 +1,41 @@
+{
+  "name": "@repo/database",
+  "version": "1.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "clean": "rimraf dist",
+    "db:migrate:deploy": "prisma migrate deploy",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:seed": "tsx src/seed.ts",
+    "dev": "tsup --watch --onSuccess \"node dist/index.js\"",
+    "format": "prisma format",
+    "generate": "prisma generate",
+    "lint": "eslint src/ --max-warnings 0",
+    "lint:fix": "eslint src/ --fix",
+    "predev": "turbo run generate",
+    "studio": "prisma studio",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.9.1",
+    "@rhidium/core": "^2.0.0",
+    "discord.js": "^14.14.1"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.10.4",
+    "eslint": "^8.54.0",
+    "prisma": "^5.9.1",
+    "rimraf": "^5.0.5",
+    "tsup": "^8.0.1",
+    "tsx": "^4.4.0",
+    "typescript": "^5.3.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

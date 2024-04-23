@@ -1,0 +1,14 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "pipeline": {
+    "build": {
+      "env": [
+        "PORT",
+        "NEXT_PUBLIC_ANALYTICS_ID",
+        "SENTRY_CSP_REPORT_URI"
+      ],
+      "outputs": [".next/**"]
+    }
+  }
+}

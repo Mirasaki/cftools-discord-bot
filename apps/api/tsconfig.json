@@ -1,0 +1,8 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "lib": ["ES2015"],
+  },
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts"],
+}

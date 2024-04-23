@@ -1,24 +1,74 @@
-version: '3.1'
+version: "3"
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  app_network:
+    driver: bridge
+    # external: true
 
 services:
   client:
-    container_name: cftools-discord-bot
+    container_name: client
+    depends_on:
+      - api
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./apps/client/Dockerfile
     restart: unless-stopped
     volumes:
-      - ./config/config.js:/app/config/config.js:ro
-      - ./config/servers.js:/app/config/servers.js:ro
-      - ./cftools-discord-bot.db:/app/cftools-discord-bot.db
-    env_file:
-      - config/.env
+      - ./apps/client/data:/app/apps/client/data
+      - ./apps/client/logs:/app/apps/client/logs
+      - ./apps/client/config.json:/app/apps/client/config.json
+      - ./apps/client/config.example.json:/app/apps/client/config.example.json
+    networks:
+      - app_network
 
-  puppeteer:
-    container_name: cftools-discord-bot-puppeteer
-    image: buildkite/puppeteer
+  web:
+    container_name: web
+    depends_on:
+      - api
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
     restart: unless-stopped
+    ports:
+      - 3000:3000
+    networks:
+      - app_network
+
+  api:
+    container_name: api
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    networks:
+      - app_network
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
-      - ./cftools-discord-bot.db:/app/cftools-discord-bot.db
-    env_file:
-      - config/.env
+      - database:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  database:
+    driver: local

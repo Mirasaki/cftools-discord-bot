@@ -1,0 +1,27 @@
+{
+  "typescript.format.enable": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.implementationsCodeLens.enabled": true,
+  "cSpell.enabled": true,
+  "cSpell.words": [
+    "Greyple",
+    "Rhidium"
+  ],
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "eslint.codeActionsOnSave.mode": "all",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "eslint.validate": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
+  "eslint.useESLintClass": true,
+}

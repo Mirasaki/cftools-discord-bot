@@ -1,0 +1,8 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "lib": ["ES2015", "DOM"],
+  },
+  "include": ["**/*.ts", "tsup.config.ts"],
+  "exclude": ["node_modules"]
+}
