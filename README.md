@@ -10,12 +10,12 @@ This Turborepo includes the following packages/apps:
 
 - `api`: an Express API
 - `web`: a [Next.js](https://nextjs.org/) app
+- `client`: a `discord.js` bot/application
 - `@repo/database`: [Prisma](https://www.prisma.io/) ORM wrapper to manage & access your database directly from multiple apps
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/jest-presets`: a collection of jest presets
 - `@repo/logger`: a logger that can be used in any app or package
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-- `@repo/ui`: a stub React component library to be used in any application
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -43,7 +43,7 @@ Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
 ```bash
-npx turbo login
+pnpm dlx turbo login
 ```
 
 This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
@@ -51,7 +51,7 @@ This will authenticate the Turborepo CLI with your [Vercel account](https://verc
 Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
 ```bash
-npx turbo link
+pnpm dlx turbo link
 ```
 
 ### Database

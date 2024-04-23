@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   motion,
@@ -6,9 +6,9 @@ import {
   useMotionValue,
   useScroll,
   useTransform,
-} from "framer-motion";
+} from 'framer-motion';
 import Image from 'next/image';
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import { config } from '../../../config';
 import { NavItem } from '@/lib/types';
 import Link from 'next/link';
@@ -17,29 +17,29 @@ import { cn } from '@/lib/utils';
 
 export const defaultNavigation = {
   items: config.navigation?.items ?? [
-    { label: "About", href: "#about", enabled: true },
-    { label: "Servers", href: "#servers", enabled: true },
-    { label: "Leaderboard", href: "#leaderboard", enabled: config.cftools.leaderboard.enabled },
-    { label: "Contact", href: "#contact", enabled: true },
+    { label: 'About', href: '#about', enabled: true },
+    { label: 'Servers', href: '#servers', enabled: true },
+    { label: 'Leaderboard', href: '#leaderboard', enabled: config.cftools.leaderboard.enabled },
+    { label: 'Contact', href: '#contact', enabled: true },
   ],
 } satisfies { items: NavItem[] };
 
 function useBoundedScroll(threshold: number) {
-  let { scrollY } = useScroll();
-  let scrollYBounded = useMotionValue(0);
-  let scrollYBoundedProgress = useTransform(
+  const { scrollY } = useScroll();
+  const scrollYBounded = useMotionValue(0);
+  const scrollYBoundedProgress = useTransform(
     scrollYBounded,
     [0, threshold],
     [0, 1]
   );
 
   useEffect(() => {
-    return scrollY.on("change", (current) => {
-      let previous = scrollY.getPrevious();
-      let diff = typeof previous === 'number'
+    return scrollY.on('change', (current) => {
+      const previous = scrollY.getPrevious();
+      const diff = typeof previous === 'number'
         ? current - previous
         : current;
-      let newScrollYBounded = scrollYBounded.get() + diff;
+      const newScrollYBounded = scrollYBounded.get() + diff;
 
       scrollYBounded.set(clamp(newScrollYBounded, 0, threshold));
     });
@@ -63,15 +63,15 @@ export default function Header({
   
   // Note: 80px is exactly h-20 in Tailwind CSS
   // This is the threshold where the header will shrink
-  let { scrollYBoundedProgress } = useBoundedScroll(80);
-  let scrollYBoundedProgressDelayed = useTransform(
+  const { scrollYBoundedProgress } = useBoundedScroll(80);
+  const scrollYBoundedProgressDelayed = useTransform(
     scrollYBoundedProgress,
     [0, 0.75, 1],
     [0, 0, 1]
   );
 
   return (
-    <div className={cn("z-50 flex-1 overflow-y-scroll", className)}>
+    <div className={cn('z-50 flex-1 overflow-y-scroll', className)}>
       <motion.header
         style={{
           height: useTransform(
@@ -91,7 +91,7 @@ export default function Header({
             [3, 1]
           ),
         }}
-        className={`fixed inset-x-0 flex h-20 shadow backdrop-blur-md duration-300`}
+        className={'fixed inset-x-0 flex h-20 shadow backdrop-blur-md duration-300'}
       >
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-8">
           <motion.div
@@ -150,5 +150,5 @@ export default function Header({
   );
 }
 
-let clamp = (number: number, min: number, max: number) =>
+const clamp = (number: number, min: number, max: number) =>
   Math.min(Math.max(number, min), max);

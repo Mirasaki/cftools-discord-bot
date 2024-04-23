@@ -8,7 +8,7 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer';
 import { cn } from '@/lib/utils';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { HeaderProps, defaultNavigation } from './animated-header';
 import { MenuIcon, XIcon } from 'lucide-react';
@@ -58,15 +58,15 @@ const MobileNav = ({
               'flex flex-col gap-4 flex-grow h-max',
               'p-4 border-t border-muted',
             )}>
-                {items.map((item, index) => (
-                  <LinkButton key={index} href={item.href}
-                    variant="ghost"
-                    size="lg"
-                    className='w-fit mx-auto'
-                  >
-                    {item.label}
-                  </LinkButton>
-                ))}
+              {items.map((item, index) => (
+                <LinkButton key={index} href={item.href}
+                  variant="ghost"
+                  size="lg"
+                  className='w-fit mx-auto'
+                >
+                  {item.label}
+                </LinkButton>
+              ))}
             </div>
           </div>
           <DrawerFooter className='container max-w-sm border-t border-muted'>
