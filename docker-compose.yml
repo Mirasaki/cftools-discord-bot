@@ -67,7 +67,7 @@ services:
     volumes:
       - database:/var/lib/postgresql/data
     networks:
-      - app-network
+      - app_network
 
 volumes:
   database:
