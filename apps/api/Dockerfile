@@ -56,4 +56,4 @@ COPY --from=installer /app/apps/api/node_modules ./node_modules
 COPY --from=installer /app/apps/api/dist ./dist
 COPY --from=installer /app/apps/api/package.json .
 
-CMD node dist/src/index.js
+CMD node dist/index.js
