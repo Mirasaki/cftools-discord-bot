@@ -6,7 +6,7 @@ RUN apk update
 WORKDIR /app
 RUN yarn global add turbo
 COPY . .
-RUN turbo prune --scope=@repo/api --docker
+RUN turbo prune --scope=api --docker
 
 # Installer
 FROM node:18-alpine AS installer
