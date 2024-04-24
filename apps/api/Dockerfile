@@ -8,7 +8,7 @@ RUN apk update
 WORKDIR /app
 RUN yarn global add turbo
 COPY . .
-RUN turbo prune api --docker
+RUN turbo prune --scope=@repo/api --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
