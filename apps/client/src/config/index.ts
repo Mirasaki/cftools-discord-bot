@@ -2,8 +2,7 @@ import { existsSync, readFileSync } from 'fs';
 import { UserConfigOptions } from '.';
 import { logger } from '@rhidium/core';
 
-const configFileExists = existsSync('./config/config.json'); 
-const monoRepoConfigFileExists = existsSync('./apps/client/config/config.json');
+const configFileExists = existsSync('./config/config.json');
 
 if (
   !configFileExists
@@ -21,9 +20,7 @@ if (
 
 const configData = configFileExists
   ? readFileSync('./config/config.json', 'utf8')
-  : monoRepoConfigFileExists
-    ? readFileSync('./apps/client/config/config.json', 'utf8')
-    : readFileSync('./config/config.example.json', 'utf8');
+  : readFileSync('./config/config.example.json', 'utf8');
 const userConfig = JSON.parse(configData) as UserConfigOptions;
 
 export default userConfig;

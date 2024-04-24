@@ -19,8 +19,8 @@ services:
     volumes:
       - ./apps/client/data:/app/apps/client/data
       - ./apps/client/logs:/app/apps/client/logs
-      - ./apps/client/config.json:/app/apps/client/config.json
-      - ./apps/client/config.example.json:/app/apps/client/config.example.json
+      - ./apps/client/config/config.json:/app/apps/client/config/config.json
+      - ./apps/client/config/config.example.json:/app/apps/client/config/config.example.json
     networks:
       - app_network
 
