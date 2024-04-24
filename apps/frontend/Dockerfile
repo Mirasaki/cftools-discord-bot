@@ -6,7 +6,7 @@ RUN apk update
 WORKDIR /app
 RUN yarn global add turbo
 COPY . .
-RUN turbo prune --scope=frontend --docker
+RUN turbo prune --scope=web --docker
 
 # Installer
 FROM node:alpine AS installer
@@ -41,7 +41,7 @@ ENV NEXT_PUBLIC_ANALYTICS_ID=$NEXT_PUBLIC_ANALYTICS_ID
 # [DEV] - Review, I do think we need these
 RUN pnpm generate
 
-RUN turbo build --filter=frontend...
+RUN turbo build --filter=web...
 
 # Runner
 FROM node:alpine AS runner
@@ -51,16 +51,16 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
-COPY --from=installer /app/apps/frontend/next.config.mjs .
-COPY --from=installer /app/apps/frontend/package.json .
+COPY --from=installer /app/apps/web/next.config.mjs .
+COPY --from=installer /app/apps/web/package.json .
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=installer --chown=nextjs:nodejs /app/apps/frontend/.next/standalone ./
-COPY --from=installer --chown=nextjs:nodejs /app/apps/frontend/.next/static ./apps/frontend/.next/static
-COPY --from=installer --chown=nextjs:nodejs /app/apps/frontend/public ./apps/frontend/public
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
 
 # Include prisma files for migrations, db:push, etc.
 COPY --from=installer --chown=nextjs:nodejs /app/packages/database/prisma ./packages/database/prisma
 
-CMD node apps/frontend/server.js
+CMD node apps/web/server.js

@@ -5,7 +5,7 @@ export const config = {
     {
       id: 's4',
       name: '28 DAYZ LATER | s4 | TEST SERVER | DISCORD.GG/28DAYZLATER',
-      ipv4: '172.111.51.30 ',
+      ipv4: '172.111.51.30',
       gamePort: 2402,
       steamQueryPort: 27017,
       serverApiIdEnvKey: 'CFTOOLS_SERVER_API_ID_1',
@@ -39,14 +39,14 @@ export const config = {
 export const resolvedConfig = {
   cftools: config.cftools,
   servers: config.servers.map(server => ({
-    name: server.name,
-    ipv4: server.ipv4,
+    name: server.name.trim(),
+    ipv4: server.ipv4.trim(),
     gamePort: server.gamePort,
     steamQueryPort: server.steamQueryPort,
-    serverApiId: process.env[server.serverApiIdEnvKey],
-    banListId: process.env[server.banListIdEnvKey],
-    webhookSecret: process.env[server.webhookSecretEnvKey],
-    banListWebhookSecret: process.env[server.banListWebhookSecretEnvKey],
+    serverApiId: process.env[server.serverApiIdEnvKey]?.trim(),
+    banListId: process.env[server.banListIdEnvKey]?.trim(),
+    webhookSecret: process.env[server.webhookSecretEnvKey]?.trim(),
+    banListWebhookSecret: process.env[server.banListWebhookSecretEnvKey]?.trim(),
   })),
 };
 

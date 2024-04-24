@@ -176,7 +176,7 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
 
-  apps/frontend:
+  apps/web:
     dependencies:
       '@radix-ui/react-dialog':
         specifier: ^1.0.5

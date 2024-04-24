@@ -1,5 +1,5 @@
 {
-  "name": "@repo/api",
+  "name": "api",
   "version": "1.1.0",
   "private": true,
   "main": "./dist/index.js",
