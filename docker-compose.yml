@@ -7,6 +7,7 @@ networks:
     driver: bridge
     # external: true
 
+# docker compose run --rm client sh -c "cd ../../packages/database && npx prisma db push"
 services:
   client:
     container_name: client
@@ -16,6 +17,7 @@ services:
       context: .
       dockerfile: ./apps/client/Dockerfile
     restart: unless-stopped
+    env_file: .env
     volumes:
       - ./apps/client/data:/app/apps/client/data
       - ./apps/client/logs:/app/apps/client/logs
@@ -28,6 +30,7 @@ services:
     container_name: frontend
     depends_on:
       - api
+    env_file: .env
     build:
       context: .
       dockerfile: ./apps/frontend/Dockerfile
@@ -41,6 +44,7 @@ services:
     container_name: api
     depends_on:
       - postgres
+    env_file: .env
     build:
       context: .
       dockerfile: ./apps/api/Dockerfile
