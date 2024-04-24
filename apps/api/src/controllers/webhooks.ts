@@ -88,7 +88,7 @@ export const postCFToolsWebhookController: ExpressController = async (req, res, 
   }
 
   // Process the request
-  debugLog('Processing webhook event for delivery', delivery);
+  debugLog('Processing webhook event for delivery', delivery, body);
   prisma.webhookEvent.create({
     data: {
       serverId,
