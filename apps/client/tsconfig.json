@@ -112,7 +112,7 @@
     "scripts",
     "test",
     "locales/**/*.json"
-, "../../packages/database/src/CommandCooldown.ts", "../../packages/database/src/CommandStatistics.ts", "../../packages/database/src/Guilds.ts"  ],
+	],
   "exclude": [
     "node_modules",
     "dist",
