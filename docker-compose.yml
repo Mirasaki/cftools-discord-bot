@@ -24,13 +24,13 @@ services:
     networks:
       - app_network
 
-  web:
-    container_name: web
+  frontend:
+    container_name: frontend
     depends_on:
       - api
     build:
       context: .
-      dockerfile: ./apps/web/Dockerfile
+      dockerfile: ./apps/frontend/Dockerfile
     restart: unless-stopped
     ports:
       - 3000:3000

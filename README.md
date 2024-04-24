@@ -132,7 +132,7 @@ This repo includes optional remote caching for Docker. In the Dockerfiles of the
 You can test this behavior using a command like:
 
 ```bash
-docker build -f apps/web/Dockerfile . --build-arg TURBO_TEAM=“your-team-name” --build-arg TURBO_TOKEN=“your-token“ --no-cache
+docker build -f apps/frontend/Dockerfile . --build-arg TURBO_TEAM=“your-team-name” --build-arg TURBO_TOKEN=“your-token“ --no-cache
 ```
 
 ### npm
