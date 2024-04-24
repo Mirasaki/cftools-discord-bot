@@ -106,3 +106,43 @@ model CommandStatistics {
   runtimeVariance     Float?
   runtimeStdDeviation Float?
 }
+
+enum WebhookEventType {
+  RCON_RESTRICTED
+  RCON_AUTHENTICATION_ERROR
+
+  GAMESERVER_DOWNTIME
+  GAMESERVER_DOWNTIME_CLEARED
+  GAMESERVER_MOD_UPDATE
+
+  USER_JOIN
+  USER_LEAVE
+  USER_KICKED
+  USER_CHAT
+
+  PLAYER_KILL
+  PLAYER_DAMAGE
+  PLAYER_DEATH
+  PLAYER_DEATH_INFECTED
+  PLAYER_DEATH_ENVIRONMENT
+  PLAYER_DEATH_STARVATION
+  PLAYER_DEATH_ANIMAL
+  PLAYER_DEATH_EXPLOSION
+  PLAYER_DEATH_OBJECT
+  PLAYER_DEATH_FALLDAMAGE
+  PLAYER_DEATH_BLOOD
+  PLAYER_SUICIDE
+  PLAYER_PLACE
+  PLAYER_INTERACT
+}
+
+model WebhookEvent {
+  id        Int     @id @unique @default(autoincrement())
+  serverId  String
+  deliveryId String @unique
+  eventType WebhookEventType
+  data      Json
+  createdAt DateTime @default(now())
+
+  @@index([serverId])
+}

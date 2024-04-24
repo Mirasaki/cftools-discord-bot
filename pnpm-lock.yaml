@@ -26,6 +26,12 @@ importers:
 
   apps/api:
     dependencies:
+      '@repo/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      '@repo/database':
+        specifier: workspace:*
+        version: link:../../packages/database
       '@repo/logger':
         specifier: workspace:*
         version: link:../../packages/logger
@@ -263,6 +269,27 @@ importers:
       typescript:
         specifier: ^5
         version: 5.3.3
+
+  packages/config:
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/node':
+        specifier: ^20.10.0
+        version: 20.12.7
+      eslint:
+        specifier: ^8.54.0
+        version: 8.57.0
+      tsup:
+        specifier: ^8.0.1
+        version: 8.0.1(postcss@8.4.31)(ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.5))(typescript@5.4.5)
+      typescript:
+        specifier: ^5.3.2
+        version: 5.4.5
 
   packages/database:
     dependencies:
@@ -8788,7 +8815,7 @@ snapshots:
     dependencies:
       escape-string-regexp: 1.0.5
       eslint: 8.57.0
-      ignore: 5.3.0
+      ignore: 5.3.1
 
   eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.14.0(eslint@8.56.0)(typescript@5.3.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0):
     dependencies:
@@ -9480,7 +9507,7 @@ snapshots:
       array-union: 2.1.0
       dir-glob: 3.0.1
       fast-glob: 3.3.2
-      ignore: 5.3.0
+      ignore: 5.3.1
       merge2: 1.4.1
       slash: 3.0.0
 
@@ -9488,7 +9515,7 @@ snapshots:
     dependencies:
       dir-glob: 3.0.1
       fast-glob: 3.3.2
-      ignore: 5.3.0
+      ignore: 5.3.1
       merge2: 1.4.1
       slash: 4.0.0
 
@@ -10851,6 +10878,14 @@ snapshots:
       postcss: 8.4.31
       ts-node: 10.9.2(@types/node@20.10.4)(typescript@5.3.3)
 
+  postcss-load-config@4.0.2(postcss@8.4.31)(ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.5)):
+    dependencies:
+      lilconfig: 3.0.0
+      yaml: 2.3.4
+    optionalDependencies:
+      postcss: 8.4.31
+      ts-node: 10.9.2(@types/node@20.12.7)(typescript@5.4.5)
+
   postcss-nested@6.0.1(postcss@8.4.31):
     dependencies:
       postcss: 8.4.31
@@ -11697,6 +11732,29 @@ snapshots:
     optionalDependencies:
       postcss: 8.4.31
       typescript: 5.3.3
+    transitivePeerDependencies:
+      - supports-color
+      - ts-node
+
+  tsup@8.0.1(postcss@8.4.31)(ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.5))(typescript@5.4.5):
+    dependencies:
+      bundle-require: 4.0.2(esbuild@0.19.9)
+      cac: 6.7.14
+      chokidar: 3.5.3
+      debug: 4.3.4
+      esbuild: 0.19.9
+      execa: 5.1.1
+      globby: 11.1.0
+      joycon: 3.1.1
+      postcss-load-config: 4.0.2(postcss@8.4.31)(ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.5))
+      resolve-from: 5.0.0
+      rollup: 4.9.1
+      source-map: 0.8.0-beta.0
+      sucrase: 3.34.0
+      tree-kill: 1.2.2
+    optionalDependencies:
+      postcss: 8.4.31
+      typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
       - ts-node

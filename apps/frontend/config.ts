@@ -88,38 +88,6 @@ export const config: Config = {
       href: 'https://discord.gg/mirasaki',
     },
   },
-  servers: [
-    {
-      name: 'SKVAD EU1',
-      ipv4: '193.25.252.921',
-      gamePort: 2302,
-      steamQueryPort: 27016,
-      cftoolsApiId: '7732f152-3b6b-4da5-9356-b43ebfef2012',
-    },
-    {
-      name: 'SKVAD EU2',
-      ipv4: '193.25.252.24',
-      gamePort: 2302,
-      steamQueryPort: 27016,
-      cftoolsApiId: '40dfcdf1-2e38-4a86-8b36-f02e4c868bf5',
-    },
-    {
-      name: 'SKVAD EU3',
-      ipv4: '193.25.252.24',
-      gamePort: 2402,
-      steamQueryPort: 27017,
-      cftoolsApiId: '16c3c8d1-9e15-4729-a541-8a578288e43d',
-    },
-  ],
-  cftools: {
-    leaderboard: {
-      enabled: true,
-      defaultSortValue: 'kills',
-      allowedSortValues: ['kills', 'deaths', 'kdratio', 'longest_kill', 'longest_shot', 'playtime', 'suicides'],
-      blacklistedCFToolsIds: [],
-      showAmount: 100,
-    },
-  },
   footer: {
     trademarkNotice: 'The DayZ logo is a registered trademark of Bohemia Interactive a.s. SKVAD is not affiliated with Bohemia Interactive a.s. or DayZ. All other trademarks are the property of their respective owners.',
     brandingName: 'SKVAD Community',

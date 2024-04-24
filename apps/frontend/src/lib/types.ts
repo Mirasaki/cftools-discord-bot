@@ -139,44 +139,6 @@ export type Config = {
       href: string;
     };
   };
-  servers: {
-    /** The public facing name of the server. */
-    name: string;
-    /** The IPv4 address of the server. */
-    ipv4: string;
-    /**
-     * The port of the server
-     * 
-     * @default 2302
-     */
-    gamePort: number;
-    /**
-     * The Steam query port of the server
-     * 
-     * @default 27016
-     */
-    steamQueryPort: number;
-    /**
-     * The CFTools API ID for the server. This is used to fetch data from the CFTools API.
-     * 
-     * @see https://wiki.mirasaki.dev/docs/cftools-server-api-id
-     */
-    cftoolsApiId?: string;
-  }[];
-  cftools: {
-    leaderboard: {
-      /** Should the leaderboard section be enabled? */
-      enabled: boolean;
-      /** The default sort value for the leaderboard. */
-      defaultSortValue: LeaderboardSortValues;
-      /** The allowed sort values for the leaderboard. */
-      allowedSortValues: LeaderboardSortValues[];
-      /** The CFTools IDs to blacklist from the leaderboard, these will not be shown. */
-      blacklistedCFToolsIds: string[];
-      /** The amount of entries to show on the leaderboard. */
-      showAmount: number;
-    };
-  };
   footer: {
     /** The trademark notice for the app. */
     trademarkNotice: string;
@@ -198,5 +160,3 @@ export type Config = {
     }[];
   };
 };
-
-export type LeaderboardSortValues = 'kills' | 'deaths' | 'suicides' | 'playtime' | 'longest_kill' | 'longest_shot' | 'kdratio';
