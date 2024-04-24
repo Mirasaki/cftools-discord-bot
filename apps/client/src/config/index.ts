@@ -2,7 +2,8 @@ import { existsSync, readFileSync } from 'fs';
 import { UserConfigOptions } from '.';
 import { logger } from '@rhidium/core';
 
-const configFileExists = existsSync('./config/config.json');
+const configFileExists = existsSync('./config/config.json') 
+  ?? existsSync('./apps/client/config/config.json');
 
 if (
   !configFileExists
