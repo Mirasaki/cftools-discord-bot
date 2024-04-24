@@ -3,7 +3,12 @@
   "extends": ["//"],
   "pipeline": {
     "build": {
-      "env": [],
+      "env": [
+        "TS_NODE_DEV",
+        "CI",
+        "DRY_RUN",
+        "DEBUG_ENABLED"
+      ],
       "outputs": [".dist/**"]
     }
   }
