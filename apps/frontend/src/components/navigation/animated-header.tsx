@@ -19,7 +19,7 @@ export const defaultNavigation = {
   items: config.navigation?.items ?? [
     { label: 'About', href: '#about', enabled: true },
     { label: 'Servers', href: '#servers', enabled: true },
-    { label: 'Leaderboard', href: '#leaderboard', enabled: config.cftools.leaderboard.enabled },
+    // { label: 'Leaderboard', href: '#leaderboard', enabled: config.cftools.leaderboard.enabled },
     { label: 'Contact', href: '#contact', enabled: true },
   ],
 } satisfies { items: NavItem[] };
