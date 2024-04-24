@@ -51,7 +51,7 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
-COPY --from=installer /app/apps/frontend/next.config.js .
+COPY --from=installer /app/apps/frontend/next.config.mjs .
 COPY --from=installer /app/apps/frontend/package.json .
 
 # Automatically leverage output traces to reduce image size
