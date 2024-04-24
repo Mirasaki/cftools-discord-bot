@@ -33,7 +33,7 @@ services:
       dockerfile: ./apps/frontend/Dockerfile
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - 3100:3000
     networks:
       - app_network
 
@@ -46,7 +46,7 @@ services:
       dockerfile: ./apps/api/Dockerfile
     restart: unless-stopped
     ports:
-      - 5000:5000
+      - 5100:5000
     networks:
       - app_network
 
