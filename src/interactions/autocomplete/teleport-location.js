@@ -21,7 +21,8 @@ module.exports = new ComponentCommand({ run: async (client, interaction, query) 
   // Structuring our result for Discord's API
   return queryResult
     .map((e) => ({
-      name: e.name, value: teleportLocations.indexOf(e).toString()
+      name: e.name,
+      value: teleportLocations.indexOf(e).toString()
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 } });
