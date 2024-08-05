@@ -346,6 +346,24 @@ const rconCommand = async (
   }
 };
 
+const appGrants = async () => {
+  try {
+    const data = await fetch(
+      `${ CFTOOLS_API_URL }/@app/grants`,
+      {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${ await getAPIToken() }` }
+      }
+    );
+    return data.json();
+  }
+  catch (err) {
+    logger.syserr('Error encounter while fetching app grants');
+    logger.printErr(err);
+    return null;
+  }
+};
+
 
 // Position data isn't currently included in cftools-sdk =(
 // JK, FlorianSW added it =)
@@ -409,5 +427,6 @@ module.exports = {
   broadcastMessage,
   kickPlayer,
   postGameLabsAction,
-  rconCommand
+  rconCommand,
+  appGrants
 };
