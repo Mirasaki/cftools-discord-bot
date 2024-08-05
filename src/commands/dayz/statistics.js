@@ -69,7 +69,13 @@ module.exports = new ChatInputCommand({
 
     // Dedicated function for stat calculations
     // and sending the result to reduce cognitive complexity
-    const ctx = await playerStatisticsCtx(serverCfg, data);
+    let ctx;
+    try {
+      ctx = await playerStatisticsCtx(serverCfg, data);
+    }
+    catch (err) {
+      interaction.editReply('An error occurred while processing the player\'s statistics. This is most likely an issue with the Chromium browser. Please try again later, or disable "STATISTICS_INCLUDE_ZONES_HEATMAP" in the server configuration.');
+    }
 
     // Sending our detailed player information
     interaction.editReply(ctx);
