@@ -13,12 +13,3 @@ services:
       - ./cftools-discord-bot.db:/app/cftools-discord-bot.db
     env_file:
       - config/.env
-
-  puppeteer:
-    container_name: cftools-discord-bot-puppeteer
-    image: buildkite/puppeteer
-    restart: unless-stopped
-    volumes:
-      - ./cftools-discord-bot.db:/app/cftools-discord-bot.db
-    env_file:
-      - config/.env
